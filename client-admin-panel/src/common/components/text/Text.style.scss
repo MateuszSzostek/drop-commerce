@@ -1,0 +1,36 @@
+.text {
+  color: var(--color-app-white);
+}
+
+.text--landing-primary-title {
+  color: var(--app-white);
+  font-size: 36px;
+  font-family:
+    gill sans,
+    sans-serif;
+}
+
+.text--landing-simple {
+  color: var(--app-white);
+}
+
+.text--simple {
+}
+
+.text--primary-title {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "GillSans Bold";
+}
+
+.text--app-regular {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "GillSans Regular";
+}
+
+.text--app-regular-bold {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "GillSans Bold";
+}

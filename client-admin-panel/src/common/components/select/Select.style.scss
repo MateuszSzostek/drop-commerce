@@ -1,0 +1,36 @@
+.select {
+  height: 58px;
+  border-radius: 6px;
+
+  & > .ant-select-selector {
+    font-family:
+      gill sans,
+      sans-serif;
+  }
+}
+
+.select:focus {
+}
+
+.select:hover {
+}
+
+.select--primary {
+}
+
+.select--landing {
+  background-color: var(--synthwave-cyan-light);
+
+  & > .ant-select-selector {
+    background: var(--synthwave-cyan-light) !important;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--synthwave-cyan-light);
+  }
+}
+
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+  background-color: var(--synthwave-cyan-light);
+}

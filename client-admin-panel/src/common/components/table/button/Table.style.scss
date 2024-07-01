@@ -1,0 +1,80 @@
+.table {
+  & .ant-table {
+    background-color: var(--color-ui-foreground);
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  & tr:nth-child(even) {
+    background-color: var(--color-ui-element);
+  }
+
+  & th {
+    background-color: var(--color-ui-foreground) !important;
+    color: var(--color-app-white) !important;
+    font-family: "GillSans Bold";
+  }
+
+  & td {
+    border-color: transparent !important;
+    padding: 6px !important;
+  }
+
+  & td a,
+  & td p {
+    color: var(--color-app-white) !important;
+    font-family: "GillSans Regular";
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  & .ant-table-cell-row-hover {
+    background-color: transparent !important;
+    //  opacity: 0.7;
+    // cursor: pointer;
+  }
+
+  & .ant-pagination-item {
+    background-color: var(--app-ui-bg);
+
+    & > a {
+      color: var(--color-app-white);
+    }
+  }
+
+  & .ant-pagination-item-active {
+    background-color: var(--color-ui-foreground);
+  }
+
+  & svg {
+    color: var(--color-app-white);
+  }
+
+  & .ant-table-placeholder {
+    background-color: transparent !important;
+    background: unset !important;
+    & td {
+      color: var(--color-app-white);
+    }
+  }
+  & .ant-table-placeholder:hover {
+    background-color: transparent !important;
+    background: transparent !important;
+    & td {
+      color: var(--color-app-white);
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+  }
+
+  & .ant-table-tbody > tr.ant-table-placeholder {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
+}
+
+.table--primary {
+  &:hover {
+  }
+}

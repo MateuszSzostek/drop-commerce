@@ -1,0 +1,60 @@
+.input {
+  padding: 6px;
+  border: 1px solid gray;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: "Lato Bold";
+}
+
+textarea {
+  color: white !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition:
+    background-color 0s 600000s,
+    color 0s 600000s !important;
+}
+
+.input:focus {
+}
+
+.input:hover {
+}
+
+.input--primary {
+  background-color: var(--color-ui-bg);
+  color: white;
+
+  &.ant-input-outlined:focus-within {
+    background-color: var(--color-ui-bg);
+    border: 1px solid white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-ui-bg);
+    background: var(--color-ui-bg);
+    border: 1px solid gray;
+  }
+
+  &.ant-input-disabled {
+    background-color: #42414b !important;
+    border: 1px solid gray;
+    color: white;
+
+    &:hover {
+      border: 1px solid gray;
+      border-color: gray !important;
+    }
+  }
+}
+
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+  background-color: var(--synthwave-cyan-light);
+}
+
+.ant-input-outlined.ant-input-disabled {
+  background-color: gray;
+}

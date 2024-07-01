@@ -1,0 +1,19 @@
+.disposable {
+  background-color: var(--primary-color);
+  color: var(--text-primary-color);
+  opacity: 1;
+}
+
+.dispose {
+  animation: fadeOut 1 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

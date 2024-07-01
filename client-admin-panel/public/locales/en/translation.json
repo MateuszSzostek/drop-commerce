@@ -1,0 +1,189 @@
+{
+  "navigation": {
+    "dashboard-link": "Dashboard",
+    "products-link": "Products",
+    "customers-link": "Customers",
+    "orders-link": "Orders",
+    "categories-link": "Categories",
+    "chat-link": "Chat",
+    "invoices-link": "Invoices",
+    "costs-link": "Costs"
+  },
+  "register-form": {
+    "title": "Zarejestruj się",
+    "email-label": "Email",
+    "password-label": "Hasło",
+    "privacy-policy-label": "Oświadczam, że znam i akceptuję warunki ogólne i politykę prywatności.",
+    "register-button": "Zarejestruj się",
+    "have-a-account-label": "Masz juz konto? ",
+    "login-link": "Zaloguj się",
+    "google-register-button": "Zarejestruj się przy użyciu konta Google"
+  },
+  "login-form": {
+    "title": "Zaloguj się",
+    "google-login-button": "Zaloguj się przy użyciu konta Google",
+    "email-label": "Email",
+    "password-label": "Hasło",
+    "forgot-password-link": "Nie pamiętasz hasła? ",
+    "login-button": "Zaloguj się",
+    "have-no-account-label": "Nie masz konta? ",
+    "register-link": "Zarejestruj się"
+  },
+  "reset-password-form": {
+    "title": "Przypomnij hasło",
+    "email-label": "Email",
+    "send-button": "Wyślij",
+    "have-no-account-label": "Nie masz konta? ",
+    "register-link": "Zarejestruj się"
+  },
+  "new-password-form": {
+    "title": "Podaj nowe hasło",
+    "password-label": "Hasło",
+    "confirm-password-label": "Powtórz hasło",
+    "change-password-button": "Zmień hasło",
+    "have-no-account-label": "Nie masz konta? ",
+    "register-link": "Zarejestruj się"
+  },
+  "register-confirmation-link-modal": {
+    "message": "Wysłaliśmy wiadomość e-mail na podany adres z linkiem do potwierdzenia rejestracji"
+  },
+  "register-confirmation-page": {
+    "loading-text": "Potwierdzamy twoje konto...",
+    "success-text": "Twoje konto zostało potwierdzone",
+    "error-text": "Wystąpił błąd podczas potwierdzania twojego konta, proszę spróbuj ponownie za jakiś czas"
+  },
+  "password-changed-confirmation-modal": {
+    "message": "Hasło zostało zmienione"
+  },
+  "save-invoice-company-details-confirmation-modal": {
+    "title": "Zapisywanie Twoich danych powiodło się!",
+    "message": "Zawsze możesz je edytować w swoim profilu"
+  },
+  "error-code": {
+    "required": "To pole jest wymagane",
+    "email": {
+      "must-be-a-valid-email": "Podany email jest nie wazny",
+      "in-use": "Email in use"
+    },
+    "password": {
+      "uppercase-letter": "Haslo powinno zawierac przynajmiej jedną dużą literę",
+      "must-contain-at-least-one-special-character": "Password must have at least one special scharacter",
+      "must-be-at-least-4-characters-longand-at-most-20": "Password must be between 4 and 20 characters"
+    }
+  },
+  "reset-password-sent-confirmation-modalss": {
+    "message:": "Na podany adres został wysłany link po kliknięciu w niego możliwa będzie zmiana hasła"
+  },
+  "reset-password-sent-confirmation-modal": {
+    "message": "Na podany adres został wysłany link po kliknięciu w niego możliwa będzie zmiana hasła"
+  },
+  "dashboard": {
+    "title": "",
+    "fetch-all-ikonka-products-button": "Fetch all Ikonka Products to Database"
+  },
+  "products": {
+    "products-list": {
+      "title": "Products",
+      "add-new-product-button": "Add new product",
+      "name-label": "Product name",
+      "price-changed-label": "Price changed",
+      "updates-label": "Updates",
+      "category-missing-label": "Category missing",
+      "lp-header": "Lp.",
+      "name-header": "Name",
+      "id-header": "Id",
+      "provider-code-header": "Provider unique code",
+      "provider-header": "Provider",
+      "price-changed-header": "Price changed",
+      "updates-header": "Provider updates",
+      "category-missing-header": "Category missing",
+      "add-product-button": "Add Product"
+    },
+    "product": {
+      "title": "Product",
+      "status": "Status",
+      "activate-button": "Aktywuj",
+      "id-label": "Id",
+      "name-label": "Name",
+      "provider-label": "Provider",
+      "net-price-label": "Net Price",
+      "gross-label": "Gross Price",
+      "provider-price-label": "Provider net price",
+      "margin-label": "Margin",
+      "vat-label": "Vat",
+      "net-profit-label": "Net profit",
+      "suggested-detail-price-label": "Suggested detail price",
+      "provider-identifier-label": "Provider product identifier",
+      "short-description-label": "Short desciption",
+      "long-description-label": "Long desciption",
+      "too-big-for-a-parcel-locker-label": "Too big for a parcel locker",
+      "delivery-time-label": "Delivery time",
+      "next-delivery-label": "Next delivery",
+      "length-label": "Length",
+      "height-label": "Height",
+      "weight-label": "Weight",
+      "amount-in-box-label": "Amount in box",
+      "state-label": "State",
+      "link-to-instruction-label": "Link to instruction",
+      "link-to-pictures-label": "Link to pictures",
+      "volume-label": "Volume",
+      "categories-label": "Categories",
+      "tags-label": "Tags",
+      "pictures-label": "Pictures"
+    },
+    "ikonka": {
+      "title": "Ikonka Product",
+      "transfer-to-text": "Copy to: ",
+      "kod-kreskowy-label": "kod-kreskowy",
+      "nazwa-label": "nazwa",
+      "dostawca-label": "dostawca",
+      "cena-label": "cena",
+      "grupa_rabatowa-label": "grupa_rabatowa",
+      "vat-label": "vat",
+      "sugerowana_cena_detaliczna-label": "sugerowana_cena_detaliczna",
+      "opis_krotki-label": "opis_krotki",
+      "opis-label": "opis",
+      "zdp-label": "zdp",
+      "czas_dostawy-label": "czas_dostawy",
+      "najblizsza_dostawa-label": "najblizsza_dostawa",
+      "dlugosc-label": "dlugosc",
+      "wysokosc-label": "wysokosc",
+      "waga-label": "waga",
+      "sztuk_w_kartonie-label": "sztuk_w_kartonie",
+      "stan-label": "stan",
+      "kod-label": "kod",
+      "link_do_instrukcji-label": "link_do_instrukcji",
+      "link_do_zdjec-label": "link_do_zdjec",
+      "kategoria-label": "kategoria",
+      "objetosc-label": "objetosc",
+      "zdjecia-label": "zdjecia"
+    }
+  },
+  "customers": {
+    "customers-list": {
+      "title": "Customers",
+      "name-label": "Name",
+      "surname-label": "Surname",
+      "lp-header": "Lp.",
+      "id-header": "Id",
+      "name-header": "Name",
+      "surname-header": "Surname"
+    },
+    "customer": {
+      "title": "Customer",
+      "status": "Status",
+      "activate-button": "Activate",
+      "id-label": "Id",
+      "name-label": "Name",
+      "surname-label": "Surname"
+    }
+  },
+  "categories": {
+    "add-category-modal": {
+      "title": "Add category",
+      "cancel-button": "Cancel",
+      "accept-button": "Save",
+      "category-name-label": "Category name"
+    }
+  }
+}

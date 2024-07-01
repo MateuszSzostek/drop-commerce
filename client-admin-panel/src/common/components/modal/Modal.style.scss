@@ -1,0 +1,13 @@
+.modal {
+  & * {
+    color: var(--color-app-white) !important;
+    font-family: "GillSans Bold";
+  }
+  & > div > div,
+  & .ant-modal-header {
+    background-color: var(--color-ui-foreground) !important;
+  }
+}
+
+.modal--simple {
+}

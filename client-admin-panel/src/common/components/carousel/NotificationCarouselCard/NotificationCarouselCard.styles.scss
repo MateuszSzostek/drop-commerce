@@ -1,0 +1,13 @@
+.notification-carousel-card {
+  background-color: var(--app-ui-element);
+  border: none;
+  color: var(--app-white);
+
+  & > .ant-card-head {
+    border-color: var(--app-ui-bg);
+    color: var(--app-white);
+  }
+}
+
+.notification-carousel-card--primary {
+}

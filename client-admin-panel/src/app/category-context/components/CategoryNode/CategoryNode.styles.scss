@@ -1,0 +1,23 @@
+.category-node {
+  background-color: goldenrod;
+  border: 1px solid palevioletred;
+  margin-bottom: 6px;
+  margin-right: 12px;
+}
+
+.category-node__marginer {
+  margin-left: 24px;
+}
+
+.category-node__name {
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+
+  & > button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

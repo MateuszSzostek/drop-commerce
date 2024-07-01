@@ -1,0 +1,22 @@
+.checkbox {
+  & * {
+    color: white;
+  }
+}
+
+.checkbox--landing {
+  & > span:nth-child(2) {
+    color: var(--app-white);
+  }
+
+  &:focus > .ant-checkbox-checked > .ant-checkbox-inner,
+  &:hover > .ant-checkbox-checked > .ant-checkbox-inner {
+    background-color: var(--glitch-green) !important;
+    border-color: var(--glitch-green) !important;
+  }
+
+  & > .ant-checkbox-checked > .ant-checkbox-inner {
+    background-color: var(--glitch-green);
+    border-color: var(--glitch-green);
+  }
+}

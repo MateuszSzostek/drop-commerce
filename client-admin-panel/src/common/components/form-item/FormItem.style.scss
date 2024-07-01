@@ -1,0 +1,34 @@
+.form-item {
+  border: none;
+  font-size: 14px;
+
+  & > .ant-form-item-row > .ant-form-item-label > label {
+    color: var(--color-app-white) !important;
+    font-size: 14px;
+    font-family: "GillSans Regular" !important;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.form-item:focus {
+}
+
+.form-item:hover {
+}
+
+.form-item--primary {
+}
+
+.form-item--landing {
+  & > .ant-form-item-row > .ant-form-item-label > label {
+    color: var(--app-white);
+    font-size: 14px;
+
+    &::before {
+      content: none;
+    }
+  }
+}

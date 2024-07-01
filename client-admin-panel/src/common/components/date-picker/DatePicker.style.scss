@@ -1,0 +1,47 @@
+.date-picker {
+  height: 48px;
+  width: 100%;
+  border-radius: 26px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.date-picker--primary {
+  background-color: var(--color-brand-white-500) !important;
+  color: var(--color-brand-white-500) !important;
+  border-color: transparent;
+
+  & * {
+    color: black !important;
+  }
+
+  &:hover {
+    background-color: var(--app-ui-bg);
+  }
+
+  & > div {
+    & > input::placeholder {
+      color: black !important;
+    }
+  }
+}
+
+.date-picker--secondary {
+  background-color: var(--color-brand-blue-500) !important;
+  color: var(--color-brand-white-70) !important;
+  border-color: transparent;
+
+  & * {
+    color: var(--color-brand-white-70) !important;
+  }
+
+  &:hover {
+    background-color: var(--app-ui-bg);
+  }
+
+  & > div {
+    & > input::placeholder {
+      color: var(--color-brand-white-70) !important;
+    }
+  }
+}
