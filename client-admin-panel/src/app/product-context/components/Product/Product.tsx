@@ -12,7 +12,8 @@ import { TextareaInputStyleType } from "../../../../common/components/input/text
 const GUTTER = 12
 
 export default function Product() {
-  const { productForm, initialProviderProductValues, onFinish, onFinishFailed, handleProductFieldsChange } = useProduct()
+  const { productForm, initialProviderProductValues, categoriesSelectOptions, providerResponse, onFinish, onFinishFailed, handleProductFieldsChange } =
+    useProduct()
   const [t] = useTranslation()
 
   return (
@@ -287,7 +288,7 @@ export default function Product() {
                   label={t("products.product.categories-label")}
                   name={PRODUCT_INPUT_FIELDS.categories}
                   hasFeedback>
-                  <Select options={[]} />
+                  <Select options={categoriesSelectOptions} />
                 </FormItem>
               </Col>
             </Row>
@@ -305,47 +306,21 @@ export default function Product() {
 
             <Row gutter={GUTTER}>
               <Col span={24}>
-                <Form.List
-                  name="names"
-                  rules={[
-                    {
-                      validator: async (_, names) => {
-                        //    if (!names || names.length < 2) {
-                        //     return Promise.reject(new Error("At least 2 passengers"))
-                        //  }
-                      },
-                    },
-                  ]}>
-                  {(fields, { add, remove }, { errors }) => (
-                    <>
-                      {fields.map((field, index) => (
-                        <Form.Item label={index === 0 ? "Pictures" : ""} required={false} key={field.key}>
-                          <Form.Item
-                            {...field}
-                            validateTrigger={["onChange", "onBlur"]}
-                            rules={[
-                              {
-                                required: true,
-                                whitespace: true,
-                                message: "Please input passenger's name or delete this field.",
-                              },
-                            ]}
-                            noStyle>
-                            <TextInput placeholder="Picture link" style={{ width: "60%" }} />
-                          </Form.Item>
-                          {fields.length > 1 ? <MinusCircleOutlined className="dynamic-delete-button" onClick={() => remove(field.name)} /> : null}
-                        </Form.Item>
-                      ))}
-                      <Form.Item>
-                        <Button type="dashed" onClick={() => add()} style={{ width: "60%" }} icon={<PlusOutlined />}>
-                          Add Picture
-                        </Button>
-
-                        <Form.ErrorList errors={errors} />
-                      </Form.Item>
-                    </>
-                  )}
-                </Form.List>
+                {productForm.getFieldValue("pictures")?.map((el) => {
+                  return (
+                    <Row style={{ width: "100%" }} justify="space-between" align="middle">
+                      <Col span={6}>
+                        <img src={el} style={{ width: "100px", height: "100px" }} />
+                      </Col>
+                      <Col span={16}>
+                        <p style={{ color: "white" }}>{el}</p>
+                      </Col>
+                      <Col span={2}>
+                        <Button>-</Button>
+                      </Col>
+                    </Row>
+                  )
+                })}
               </Col>
             </Row>
             <Col span={12}>
@@ -355,7 +330,7 @@ export default function Product() {
         </Col>
 
         <Col span={12}>
-          <Ikonka productForm={productForm} initialValues={initialProviderProductValues} />
+          <Ikonka productForm={productForm} initialValues={initialProviderProductValues} providerResponse={providerResponse} />
         </Col>
       </Row>
     </>

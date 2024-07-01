@@ -18,6 +18,7 @@ import {
   FILTER_PRODUCTS_INPUT_FIELDS,
   FilterProductsFieldType,
   IKONKA_INPUT_FIELDS,
+  IkonkaProduct,
   PRODUCT_INPUT_FIELDS,
   ProductFieldType,
 } from "../../../domain/products-context"
@@ -31,9 +32,11 @@ const GUTTER = 12
 export default function Ikonka({
   productForm,
   initialValues,
+  providerResponse,
 }: {
   productForm: FormInstance<ProductFieldType>
   initialValues: { name: string; value: string }[]
+  providerResponse: IkonkaProduct
 }) {
   const { productsTableColumns, productsList, ikonkaForm, navigateToAddProduct, onFinish, onFinishFailed, transferValue } = useIkonka(
     productForm,
@@ -411,8 +414,34 @@ export default function Ikonka({
 
             <Row gutter={GUTTER}>
               <Col span={24}>
-                <Row wrap={false} align="middle" style={{ width: "100%" }}>
+                <Row style={{ width: "100%" }}>
+                  <Button style={{ marginBottom: "12px" }}>Add all pictures</Button>
+                  <Col span={24}>
+                    {providerResponse?.zdjecia?.map((el) => {
+                      return (
+                        <Row style={{ width: "100%" }} justify="space-between" align="middle">
+                          <Col span={6}>
+                            <img src={el} style={{ width: "100px", height: "100px" }} />
+                          </Col>
+                          <Col span={16}>
+                            <p style={{ color: "white" }}>{el}</p>
+                          </Col>
+                          <Col span={2}>
+                            <Button
+                              onClick={() => {
+                                console.log("SETTTT")
+                                productForm.setFieldValue("pictures", el)
+                                console.log(productForm.getFieldValue("pictures"))
+                              }}>
+                              +
+                            </Button>
+                          </Col>
+                        </Row>
+                      )
+                    })}
+                  </Col>
                   <FormItem<ProductFieldType>
+                    hidden
                     styleType={FormItemStyleType.PRIMARY}
                     label={t("products.ikonka.zdjecia-label")}
                     name={IKONKA_INPUT_FIELDS.zdjecia}

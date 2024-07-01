@@ -34,6 +34,10 @@ export default function useProductsList() {
   })
 
   useEffect(() => {
+    handleGetIkonkaProducts()
+  }, [])
+
+  useEffect(() => {
     if (!isLoadingProducts && products) {
       console.warn(products)
       const productsOfUserData: ProductsDataType[] = products.data.map(() => {
@@ -173,9 +177,7 @@ export default function useProductsList() {
       key: PROVIDER_PRODUCTS_TABLE_HEADERS.actions,
       //to change after reset database
       render: (text, record) => (
-        <span>
-          {record?.alreadyInShop === "false" && <Button onClick={() => handleNavigateToAddProviderProductToProducts(record?.id)}>Add Product</Button>}
-        </span>
+        <span>{record?.alreadyInShop === false && <Button onClick={() => handleNavigateToAddProviderProductToProducts(record?.id)}>Add Product</Button>}</span>
       ),
       responsive: ["xs", "sm", "md", "xl"],
     },

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { ParsedValidationErrors, Response, ValidationErrors } from "../../../../common/types"
 import { getErrors } from "../../../../common/utils"
 import { useGoogleOneTapLogin } from "@react-oauth/google"
+import { ROUTES } from "../../../routing-context/domain/router-context"
 
 export default function useLoginForm() {
   const [login, result] = useLoginMutation()
@@ -30,10 +31,10 @@ export default function useLoginForm() {
     })
     if ("error" in loginResponse) {
       onValidationErrors(loginResponse.error as ValidationErrors)
-    } else if (loginResponse.data.status === "200") {
+    } else {
+      await triggerGetCurrentUser({})
+      navigate(`/${ROUTES.app}/${ROUTES.dashboard}`)
     }
-    await triggerGetCurrentUser({})
-    // navigate("app/dashboard")
   }
 
   const onFinishFailed: FormProps<SignInFieldType>["onFinishFailed"] = (errorInfo): void => {

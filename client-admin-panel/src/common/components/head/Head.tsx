@@ -7,7 +7,7 @@ export default function Head({ children }: PropsWithChildren<IHead>) {
     <HelmetProvider>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Owlix</title>
+        <title>E-Commerce</title>
         <link rel="canonical" href="http://todo" />
         <link rel="manifest" href="/manifest.json" />
         {children}

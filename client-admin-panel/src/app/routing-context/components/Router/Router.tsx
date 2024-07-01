@@ -31,18 +31,12 @@ export default function AppRouter() {
       <Routes>
         {/*routes for all users*/}
         <Route path="/" element={<RootLayout />}>
-          <Route path={ROUTES.landing} element={<LandingLayout />}>
+          <Route path={ROUTES.auth} element={<LandingLayout />}>
             <Route path={ROUTES.login} element={<LoginView />} />
             <Route path={ROUTES.register} element={<SignUpView />} />
             <Route path={ROUTES.resetPassword} element={<ResetPasswordView />} />
             <Route path={ROUTES.newPassword} element={<NewPasswordView />} />
-            {/*
-            <Route path={ROUTES.chooseRole} element={<ChooseRoleView />} />
-            <Route path={`${ROUTES.confirmRegistration}/:userId/:token`} element={<SignUpConfirmationView />} />
-            <Route path={`${ROUTES.resetPasswordConfirmation}/:token`} element={<NewPasswordView />} />
-            */}
           </Route>
-          {/*routes for authenticated users*/}
           <Route path={ROUTES.app} element={<AdminAppLayout />}>
             <Route path={ROUTES.dashboard} element={<DashboardView />} />
             <Route path={ROUTES.products} element={<ProductsView />} />
@@ -58,7 +52,6 @@ export default function AppRouter() {
             <Route path={ROUTES.costs} element={<CostsView />} />
           </Route>
         </Route>
-        {/*routes for common actions*/}
         <Route path="/" element={isAuthenticated ? <Navigate to={ROUTES.dashboard} replace /> : <Navigate to={ROUTES.login} replace />} />
         <Route path="*" element={isAuthenticated ? <Navigate to={ROUTES.dashboard} replace /> : <Navigate to={ROUTES.login} replace />} />
       </Routes>

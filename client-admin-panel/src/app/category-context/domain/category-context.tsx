@@ -7,7 +7,7 @@ import { PaginatedItems, SelectOptions } from "../../../common/types"
 
 export type ApplyCategoriesRequest = {
   categoriesTreeObj: string
-  categoriesList: string[]
+  categoriesList: { id: string; name: string }[]
 }
 export type ApplyCategoriesResponse = {
   status: "success" | "error"
@@ -15,7 +15,7 @@ export type ApplyCategoriesResponse = {
   message: string
   data: {
     categoriesTreeObj: string
-    categoriesList: string[]
+    categoriesList: { id: string; name: string }[]
   }
 }
 
@@ -26,7 +26,7 @@ export type GetCategoriesResponse = {
   message: string
   data: {
     categoriesTreeObj: string
-    categoriesList: string[]
+    categoriesList: { id: string; name: string }[]
   }
 }
 

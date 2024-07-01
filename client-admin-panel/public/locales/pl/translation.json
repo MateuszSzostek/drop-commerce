@@ -94,10 +94,16 @@
       "id-header": "Id",
       "provider-code-header": "Provider unique code",
       "provider-header": "Provider",
+      "provider-id-header": "Provider Product Id",
       "price-changed-header": "Price changed",
       "updates-header": "Provider updates",
+      "actions-header": "Provider updates",
+      "provider-actions-header": "",
       "category-missing-header": "Category missing",
-      "add-product-button": "Add Product"
+      "add-product-button": "Add Product",
+      "providers-title": "Provider Products",
+      "provider-product-name-label": "Provider Product Name",
+      "provider-product-id-label": "Provider Product Id"
     },
     "product": {
       "title": "Product",

@@ -6,7 +6,7 @@ export interface ProtectedRouteProps {
 
 export const ROUTES = {
   app: "app",
-  landing: "landing",
+  auth: "auth",
   login: "login",
   register: "register",
   newPassword: "reset_password",

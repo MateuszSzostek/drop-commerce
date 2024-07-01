@@ -132,6 +132,7 @@ export default function useIkonka(productForm: FormInstance<ProductFieldType>, i
     productsTableColumns,
     productsList,
     ikonkaForm,
+    initialValues,
     onFinish,
     onFinishFailed,
     navigateToAddProduct,

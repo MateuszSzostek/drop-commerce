@@ -307,8 +307,8 @@ export const PRODUCTS_TABLE_HEADERS = {
 export const PROVIDER_PRODUCTS_TABLE_HEADERS = {
   id: "id",
   name: "name",
-  providerId: "providerId",
-  actions: "actions",
+  providerId: "provider-id",
+  actions: "provider-actions",
 }
 
 //////////////////////////////

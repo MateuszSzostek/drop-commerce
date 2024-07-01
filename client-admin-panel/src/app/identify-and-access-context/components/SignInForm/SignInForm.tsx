@@ -35,7 +35,7 @@ export default function SignInForm() {
           autoComplete="off"
           layout="vertical">
           <Space direction="horizontal" style={{ width: "100%", justifyContent: "center", paddingBottom: "32px" }}>
-            <Text styleType={TextStyleType.LANDING_PRIMARY_TITLE}>{t("login-form.title")}</Text>
+            <Text>{t("login-form.title")}</Text>
           </Space>
           <FormItem>
             <GoogleLogin
@@ -49,20 +49,18 @@ export default function SignInForm() {
           </FormItem>
           <Divider />
           <FormItem<SignInFieldType>
-            styleType={FormItemStyleType.LANDING}
             label={t("login-form.email-label")}
             name={SIGN_IN_INPUT_FIELDS.email}
             rules={[{ required: true, message: t(`error-code.required`) }]}
             help={formErrors[SIGN_IN_INPUT_FIELDS.email]}>
-            <TextInput styleType={TextInputStyleType.LANDING} />
+            <TextInput />
           </FormItem>
           <FormItem<SignInFieldType>
-            styleType={FormItemStyleType.LANDING}
             label={t("login-form.password-label")}
             name={SIGN_IN_INPUT_FIELDS.password}
             rules={[{ required: true, message: t(`error-code.required`) }]}
             help={formErrors[SIGN_IN_INPUT_FIELDS.password]}>
-            <PasswordInput styleType={PasswordInputStyleType.LANDING} />
+            <PasswordInput />
           </FormItem>
           <Text>
             <Link to={ROUTES.resetPassword}>{t("login-form.forgot-password-link")}</Link>
@@ -72,9 +70,9 @@ export default function SignInForm() {
               {t("login-form.login-button")}
             </Button>
           </FormItem>
-          <Text styleType={TextStyleType.LANDING_SIMPLE}>
+          <Text>
             {t("login-form.have-no-account-label")}
-            <Link styleType={LinkStyleType.SIMPLE} to={`/${ROUTES.landing}/${ROUTES.register}/`}>
+            <Link styleType={LinkStyleType.SIMPLE} to={`/${ROUTES.auth}/${ROUTES.register}/`}>
               {t("login-form.register-link")}
             </Link>
           </Text>

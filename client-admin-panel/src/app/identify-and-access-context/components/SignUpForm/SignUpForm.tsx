@@ -47,7 +47,7 @@ export default function SignUpForm() {
                 justifyContent: "center",
                 marginBottom: "56px",
               }}>
-              <Text styleType={TextStyleType.LANDING_PRIMARY_TITLE}>{t("register-form.title")}</Text>
+              <Text>{t("register-form.title")}</Text>
             </Space>
             <FormItem>
               <span className="google-btn__wrapper">
@@ -64,27 +64,24 @@ export default function SignUpForm() {
             </FormItem>
             <Divider />
             <FormItem<SignUpFieldType>
-              styleType={FormItemStyleType.LANDING}
               label={t("register-form.email-label")}
               name={SIGN_UP_INPUT_FIELDS.email}
               rules={[{ required: true, message: t(`error-code.required`) }]}
               help={formErrors[SIGN_UP_INPUT_FIELDS.email]}>
-              <TextInput styleType={TextInputStyleType.LANDING} />
+              <TextInput />
             </FormItem>
 
             <FormItem<SignUpFieldType>
-              styleType={FormItemStyleType.LANDING}
               label={t("register-form.password-label")}
               name={SIGN_UP_INPUT_FIELDS.password}
               rules={[{ required: true, message: t(`error-code.required`) }]}
               help={formErrors[SIGN_UP_INPUT_FIELDS.password]}>
-              <PasswordInput styleType={PasswordInputStyleType.LANDING} />
+              <PasswordInput />
             </FormItem>
 
             <FormItem<SignUpFieldType>
               name={SIGN_UP_INPUT_FIELDS.privacyPolicy}
               valuePropName="checked"
-              styleType={FormItemStyleType.LANDING}
               rules={[
                 {
                   required: true,
@@ -103,7 +100,7 @@ export default function SignUpForm() {
                 },
               ]}
               help={formErrors[SIGN_UP_INPUT_FIELDS.privacyPolicy]}>
-              <Checkbox styleType={CheckboxStyleType.LANDING}>{t("register-form.privacy-policy-label")}</Checkbox>
+              <Checkbox>{t("register-form.privacy-policy-label")}</Checkbox>
             </FormItem>
 
             <FormItem>
@@ -111,9 +108,9 @@ export default function SignUpForm() {
                 {t("register-form.register-button")}
               </Button>
             </FormItem>
-            <Text styleType={TextStyleType.LANDING_SIMPLE}>
+            <Text>
               {t("register-form.have-a-account-label")}
-              <Link styleType={LinkStyleType.SIMPLE} to={ROUTES.login}>
+              <Link styleType={LinkStyleType.SIMPLE} to={`/${ROUTES.auth}/${ROUTES.login}`}>
                 {t("register-form.login-link")}
               </Link>
             </Text>
