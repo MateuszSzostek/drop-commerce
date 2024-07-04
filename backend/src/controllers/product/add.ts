@@ -20,8 +20,8 @@ router.post(
       providerIdentifier = "",
       name = "",
       provider = "",
-      price = "",
-      providerPrice = "",
+      netPrice = "",
+      providerNettoPrice = "",
       margin = "",
       vat = "",
       netProfit = "",
@@ -38,10 +38,10 @@ router.post(
       state = "",
       code = "",
       linkToInstruction = "",
-      categories = [],
+      categories = "",
       volume = "",
       pictures = [],
-      pendingUpdates = {},
+      pendingUpdates = [],
       mirrorProductIds = [],
     } = req.body;
 
@@ -55,20 +55,22 @@ router.post(
     }
 
     const providerSnapshot = await IkonkaProduct.findOne({
-      providerIdentifier,
+      kod: providerIdentifier,
     });
 
+    console.log(providerSnapshot);
+
     //check is wholesealer product snapshot has been found
-    //if (!providerSnapshot) {
-    //   throw BadRequestError;
-    // }
+    if (!providerSnapshot) {
+      throw BadRequestError;
+    }
 
     const newProduct = Product.build({
       providerIdentifier,
       name,
       provider,
-      price,
-      providerPrice,
+      netPrice,
+      providerNettoPrice,
       margin,
       vat,
       netProfit,

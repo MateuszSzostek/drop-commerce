@@ -5,8 +5,8 @@ interface ProductAttrs {
   providerIdentifier: string;
   name: string;
   provider: string;
-  price: string;
-  providerPrice: string;
+  netPrice: string;
+  providerNettoPrice: string;
   margin: string;
   vat: string;
   netProfit: string;
@@ -39,8 +39,8 @@ export interface ProductDoc extends mongoose.Document {
   providerIdentifier: string;
   name: string;
   provider: string;
-  price: string;
-  providerPrice: string;
+  netPrice: string;
+  providerNettoPrice: string;
   margin: string;
   vat: string;
   netProfit: string;
@@ -79,11 +79,11 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
+    netPrice: {
       type: String,
       required: true,
     },
-    providerPrice: {
+    providerNettoPrice: {
       type: String,
       required: true,
     },
@@ -121,23 +121,23 @@ const productSchema = new mongoose.Schema(
     },
     nextDelivery: {
       type: String,
-      required: true,
+      required: false,
     },
     lenght: {
       type: String,
-      required: true,
+      required: false,
     },
     weight: {
       type: String,
-      required: true,
+      required: false,
     },
     height: {
       type: String,
-      required: true,
+      required: false,
     },
     amountInBox: {
       type: String,
-      required: true,
+      required: false,
     },
     state: {
       type: String,
@@ -145,27 +145,27 @@ const productSchema = new mongoose.Schema(
     },
     code: {
       type: String,
-      required: true,
+      required: false,
     },
     linkToInstruction: {
       type: String,
-      required: true,
+      required: false,
     },
     categories: {
-      type: Array<String>,
+      type: String,
       required: true,
     },
     volume: {
       type: String,
-      required: true,
+      required: false,
     },
     pictures: {
       type: Array<String>,
       required: true,
     },
     pendingUpdates: {
-      type: String,
-      required: true,
+      type: Array<String>,
+      required: false,
     },
     lastUpdateProviderProductSnapshot: {
       type: String,

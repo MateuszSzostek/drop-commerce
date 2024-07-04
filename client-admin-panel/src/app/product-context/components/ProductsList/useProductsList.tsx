@@ -40,16 +40,16 @@ export default function useProductsList() {
   useEffect(() => {
     if (!isLoadingProducts && products) {
       console.warn(products)
-      const productsOfUserData: ProductsDataType[] = products.data.map(() => {
+      const productsOfUserData: ProductsDataType[] = products.data.map((el, idx) => {
         return {
-          key: "",
-          lp: "",
-          id: "",
-          provider: "",
-          name: "",
-          updates: false,
-          priceChanged: false,
-          categoryMissing: false,
+          key: el?.id,
+          lp: idx,
+          id: el?.id,
+          provider: el?.provider,
+          name: el?.name,
+          updates: el?.pendingUpdates?.length > 0,
+          priceChanged: el?.priceChanged,
+          categoryMissing: el?.categoryMissing,
         }
       })
 

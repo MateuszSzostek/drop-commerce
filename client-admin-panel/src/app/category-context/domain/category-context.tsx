@@ -83,7 +83,7 @@ export interface Product {
   netProfit: number
   suggesterDetailPrice: number
   code: string
-  tooBigForAParcelLocker: boolean
+  tooBigForParcelLocker: boolean
   deliveryTime: string
   nextDelivery: string
   length: string

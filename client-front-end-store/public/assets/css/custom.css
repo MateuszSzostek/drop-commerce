@@ -1,0 +1,54 @@
+@media screen and (min-width: 1300px) {
+  .content__container {
+    width: calc(100vw - 50px) !important;
+    max-width: calc(100vw - 50px) !important;
+  }
+}
+
+.search-button {
+  height: 57px;
+}
+
+.product-price {
+  position: absolute;
+  bottom: 0;
+}
+
+.product {
+  position: relative;
+  padding-bottom: 24px;
+  height: 100%;
+}
+
+.product-info-card > .name {
+  height: 24px;
+  margin-bottom: 24px;
+}
+
+.featured-product .custom-carousel .owl-controls .owl-buttons {
+  position: absolute;
+  right: 0;
+  height: 10px;
+}
+
+.featured-product .custom-carousel .owl-controls .owl-prev {
+  top: -24px;
+  right: 0;
+}
+.featured-product .custom-carousel .owl-controls .owl-next {
+  top: -24px;
+  right: 0;
+}
+
+.hot-deal-price {
+  position: relative !important;
+}
+
+.season-cat-title {
+  width: 100%;
+}
+
+.main-header,
+.top-bar,
+.header-style-1 .header-nav {
+}

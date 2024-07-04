@@ -24,9 +24,9 @@ export default function useCategoriesTree() {
   )
 
   useEffect(() => {
-    if (!applyCategoriesResult.isLoading && categories && !isLoadingCategories) {
-      setCategoriesTreeRender(JSON.parse(categories?.data.categoriesTreeObj))
-      setCategoriesTree(JSON.parse(categories?.data.categoriesTreeObj))
+    if (!applyCategoriesResult.isLoading && categories && !isLoadingCategories && categories?.data?.categoriesTreeObj) {
+      setCategoriesTreeRender(JSON.parse(categories?.data?.categoriesTreeObj))
+      setCategoriesTree(JSON.parse(categories?.data?.categoriesTreeObj))
     }
   }, [applyCategoriesResult.isLoading, isLoadingCategories, categories])
 

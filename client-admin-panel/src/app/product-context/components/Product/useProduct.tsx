@@ -3,7 +3,7 @@ import { useGetProductQuery, useAddProductMutation } from "../../services/produc
 import { IkonkaProduct, ProductFieldType } from "../../domain/products-context"
 import { ROUTES } from "../../../routing-context/domain/router-context"
 import { useNavigate, useParams } from "react-router-dom"
-import { useForm } from "antd/es/form/Form"
+import { useForm, useWatch } from "antd/es/form/Form"
 import { useSearchParams } from "react-router-dom"
 import { useLazyGetIkonkProductQuery } from "../../services/ikonkaSlice"
 import { useGetCategoriesQuery } from "../../../category-context/services/categorySlice"
@@ -20,6 +20,8 @@ export default function useProduct() {
   const [triggerGetIkonkaProduct, getIkonkaProductResult] = useLazyGetIkonkProductQuery({})
   const [categoriesSelectOptions, setCategoriesSelectOptions] = useState<SelectOptions>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [selectedPictures, setSelectedPictures] = useState<string[]>([])
+  const selectedPicturesWatcher = useWatch("pictures", productForm)
 
   console.warn(searchParams.get("providerProductId"))
   console.warn(searchParams.get("selectedProviderId"))
@@ -53,7 +55,7 @@ export default function useProduct() {
   useEffect(() => {
     if (categories && !isLoadingCategories) {
       setCategoriesSelectOptions(
-        categories.data.categoriesList.map((el) => ({
+        categories?.data?.categoriesList.map((el) => ({
           value: el.name,
           label: el.name,
         })),
@@ -67,21 +69,41 @@ export default function useProduct() {
     }
   }, [])
 
+  useEffect(() => {
+    console.log(selectedPicturesWatcher)
+    if (selectedPicturesWatcher) {
+      const newPictures = [...selectedPictures, selectedPicturesWatcher.toString()]
+      const newPicturesSet = [...new Set(newPictures)]
+      setSelectedPictures(newPicturesSet as string[])
+    }
+  }, [selectedPicturesWatcher])
+
   const getIkonkaProductData = async (id: string) => {
     const result = await triggerGetIkonkaProduct({ id })
     if (result.isSuccess) {
       setInitialProviderProductValues(
         Object.keys(result.data.data).map((key) => ({
           name: key,
-          value: result.data.data[key] as keyof IkonkaProduct as string,
+          value: result?.data?.data[key] as keyof IkonkaProduct as string,
         })),
       )
 
       setProviderResponse(result?.data?.data)
     }
   }
+
+  const handleRemovePicture = (picture: string) => {
+    const newPictures = selectedPictures.filter((el) => el !== picture)
+    setSelectedPictures(newPictures)
+  }
+
   const onFinish: FormProps<ProductFieldType>["onFinish"] = async (values) => {
-    console.log(values)
+    const requestValues = values
+    requestValues.pictures = selectedPictures
+
+    requestValues.tooBigForParcelLocker = values?.tooBigForParcelLocker === "tak" ? true : false
+
+    console.log(requestValues)
 
     const result = await addProductMutation(values)
 
@@ -120,8 +142,10 @@ export default function useProduct() {
     initialProviderProductValues,
     categoriesSelectOptions,
     providerResponse,
+    selectedPictures,
     onFinish,
     onFinishFailed,
     handleProductFieldsChange,
+    handleRemovePicture,
   }
 }

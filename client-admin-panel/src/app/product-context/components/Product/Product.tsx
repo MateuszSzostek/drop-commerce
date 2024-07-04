@@ -12,8 +12,17 @@ import { TextareaInputStyleType } from "../../../../common/components/input/text
 const GUTTER = 12
 
 export default function Product() {
-  const { productForm, initialProviderProductValues, categoriesSelectOptions, providerResponse, onFinish, onFinishFailed, handleProductFieldsChange } =
-    useProduct()
+  const {
+    productForm,
+    initialProviderProductValues,
+    categoriesSelectOptions,
+    providerResponse,
+    selectedPictures,
+    onFinish,
+    onFinishFailed,
+    handleProductFieldsChange,
+    handleRemovePicture,
+  } = useProduct()
   const [t] = useTranslation()
 
   return (
@@ -167,7 +176,7 @@ export default function Product() {
                 <FormItem<ProductFieldType>
                   styleType={FormItemStyleType.PRIMARY}
                   label={t("products.product.long-description-label")}
-                  name={PRODUCT_INPUT_FIELDS.longDescription}
+                  name={PRODUCT_INPUT_FIELDS.description}
                   hasFeedback>
                   <TextareaInput styleType={TextareaInputStyleType.PRIMARY} style={{ height: "500px" }} />
                 </FormItem>
@@ -179,7 +188,7 @@ export default function Product() {
                 <FormItem<ProductFieldType>
                   styleType={FormItemStyleType.PRIMARY}
                   label={t("products.product.too-big-for-a-parcel-locker-label")}
-                  name={PRODUCT_INPUT_FIELDS.tooBigForAParcelLocker}
+                  name={PRODUCT_INPUT_FIELDS.tooBigForParcelLocker}
                   hasFeedback>
                   <TextInput styleType={TextInputStyleType.PRIMARY} />
                 </FormItem>
@@ -306,7 +315,7 @@ export default function Product() {
 
             <Row gutter={GUTTER}>
               <Col span={24}>
-                {productForm.getFieldValue("pictures")?.map((el) => {
+                {selectedPictures?.map((el) => {
                   return (
                     <Row style={{ width: "100%" }} justify="space-between" align="middle">
                       <Col span={6}>
@@ -316,11 +325,19 @@ export default function Product() {
                         <p style={{ color: "white" }}>{el}</p>
                       </Col>
                       <Col span={2}>
-                        <Button>-</Button>
+                        <Button onClick={() => handleRemovePicture(el)}>-</Button>
                       </Col>
                     </Row>
                   )
                 })}
+                <FormItem<ProductFieldType>
+                  styleType={FormItemStyleType.PRIMARY}
+                  label={t("products.product.pictures-label")}
+                  name={PRODUCT_INPUT_FIELDS.pictures}
+                  hidden
+                  hasFeedback>
+                  <TextInput styleType={TextInputStyleType.PRIMARY} />
+                </FormItem>
               </Col>
             </Row>
             <Col span={12}>

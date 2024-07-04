@@ -207,8 +207,8 @@ export default function Ikonka({
                     hasFeedback>
                     <TextareaInput styleType={TextareaInputStyleType.PRIMARY} disabled style={{ height: "500px", width: "100%" }} />
                   </FormItem>
-                  <Tooltip title={`${t("products.ikonka.transfer-to-text")}${PRODUCT_INPUT_FIELDS.longDescription}`}>
-                    <Button styleType={ButtonStyleType.PRIMITIVE} onClick={() => transferValue(IKONKA_INPUT_FIELDS.opis, PRODUCT_INPUT_FIELDS.longDescription)}>
+                  <Tooltip title={`${t("products.ikonka.transfer-to-text")}${PRODUCT_INPUT_FIELDS.description}`}>
+                    <Button styleType={ButtonStyleType.PRIMITIVE} onClick={() => transferValue(IKONKA_INPUT_FIELDS.opis, PRODUCT_INPUT_FIELDS.description)}>
                       C
                     </Button>
                   </Tooltip>
@@ -226,10 +226,10 @@ export default function Ikonka({
                     hasFeedback>
                     <TextInput styleType={TextInputStyleType.PRIMARY} disabled />
                   </FormItem>
-                  <Tooltip title={`${t("products.ikonka.transfer-to-text")}${PRODUCT_INPUT_FIELDS.tooBigForAParcelLocker}`}>
+                  <Tooltip title={`${t("products.ikonka.transfer-to-text")}${PRODUCT_INPUT_FIELDS.tooBigForParcelLocker}`}>
                     <Button
                       styleType={ButtonStyleType.PRIMITIVE}
-                      onClick={() => transferValue(IKONKA_INPUT_FIELDS.zdp, PRODUCT_INPUT_FIELDS.tooBigForAParcelLocker)}>
+                      onClick={() => transferValue(IKONKA_INPUT_FIELDS.zdp, PRODUCT_INPUT_FIELDS.tooBigForParcelLocker)}>
                       C
                     </Button>
                   </Tooltip>
@@ -431,6 +431,7 @@ export default function Ikonka({
                               onClick={() => {
                                 console.log("SETTTT")
                                 productForm.setFieldValue("pictures", el)
+
                                 console.log(productForm.getFieldValue("pictures"))
                               }}>
                               +

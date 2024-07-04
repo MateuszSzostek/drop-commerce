@@ -137,7 +137,7 @@ export interface ProductFieldType {
   netProfit: number
   suggesterDetailPrice: number
   code: string
-  tooBigForAParcelLocker: boolean
+  tooBigForParcelLocker: string | boolean
   deliveryTime: string
   nextDelivery: string
   length: string
@@ -202,7 +202,7 @@ export interface Product {
   netProfit: number
   suggesterDetailPrice: number
   code: string
-  tooBigForAParcelLocker: boolean
+  tooBigForParcelLocker: boolean
   deliveryTime: string
   nextDelivery: string
   length: string
@@ -216,7 +216,7 @@ export interface Product {
   categories: string[]
   tags: string[]
   pictures: string[]
-  updates: boolean
+  pendingUpdates: string[]
   priceChanged: boolean
   categoryMissing: boolean
 }
@@ -250,9 +250,9 @@ export enum PRODUCT_INPUT_FIELDS {
   netProfit = "netProfit",
   suggestedDetailPrice = "suggestedDetailPrice",
   shortDescription = "shortDescription",
-  longDescription = "longDescription",
+  description = "description",
   providerIdentifier = "providerIdentifier",
-  tooBigForAParcelLocker = "tooBigForAParcelLocker",
+  tooBigForParcelLocker = "tooBigForParcelLocker",
   deliveryTime = "deliveryTime",
   nextDelivery = " nextDelivery",
   length = "length",
