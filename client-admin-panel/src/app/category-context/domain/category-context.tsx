@@ -1,63 +1,70 @@
-import { BASE_API_URL } from "../../../common/consts/index"
-import { PaginatedItems, SelectOptions } from "../../../common/types"
+import { BASE_API_URL } from "../../../common/consts/index";
+import { PaginatedItems, SelectOptions } from "../../../common/types";
 
 /*
  *** Requests Types
  */
 
 export type ApplyCategoriesRequest = {
-  categoriesTreeObj: string
-  categoriesList: { id: string; name: string }[]
-}
+  categoriesTreeObj: string;
+  categoriesList: { id: string; name: string }[];
+};
 export type ApplyCategoriesResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
+  status: "success" | "error";
+  code: number;
+  message: string;
   data: {
-    categoriesTreeObj: string
-    categoriesList: { id: string; name: string }[]
-  }
-}
+    categoriesTreeObj: string;
+    categoriesList: { id: string; name: string }[];
+  };
+};
 
-export type GetCategoriesRequest = {}
+export type GetCategoriesRequest = {};
 export type GetCategoriesResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
+  status: "success" | "error";
+  code: number;
+  message: string;
   data: {
-    categoriesTreeObj: string
-    categoriesList: { id: string; name: string }[]
-  }
-}
+    categoriesTreeObj: string;
+    categoriesList: { id: string; name: string }[];
+  };
+};
 
 /*
  *** Fields Types
  */
 
 export type AddCategoryFormFieldType = {
-  categoryName: string
-}
+  categoryName: string;
+};
 
 /*
  *** Components Props Types
  */
 
 export interface ICategoryNode {
-  name: string
-  id: string
-  nodes?: ICategoryNode[]
-  handleAddCategory?: () => void
-  handleAppendNode?: (parentCategoryId: string, newCategoryName: string) => void
+  name: string;
+  id: string;
+  nodes?: ICategoryNode[];
+  handleAddCategory?: () => void;
+  handleAppendNode?: (
+    parentCategoryId: string,
+    newCategoryName: string
+  ) => void;
+  handleDeleteCategory?: (
+    parentCategoryId: string,
+    newCategoryName: string
+  ) => void;
 }
 
 export type CategoriesTree = {
-  nodes?: ICategoryNode[]
-}
+  nodes?: ICategoryNode[];
+};
 
 export type AddCategoryNodeModalProps = {
-  isOpen: boolean
-  handleAppendNode: (newCategoryName: string) => void
-}
+  isOpen: boolean;
+  handleAppendNode: (newCategoryName: string) => void;
+};
 
 /*
  *** Other Types & Interfaces
@@ -66,40 +73,40 @@ export type AddCategoryNodeModalProps = {
 export const sexSelectOptions: SelectOptions = [
   { value: "male", label: "Chlopiec" },
   { value: "female", label: "Dziewczynka" },
-]
+];
 
 export enum Providers {
   IKONKA = "IKONKA",
 }
 
 export interface Product {
-  id: string
-  name: string
-  provider: Providers
-  nettPrice: string
-  providerNettoPrice: number
-  margin: string
-  vat: number
-  netProfit: number
-  suggesterDetailPrice: number
-  code: string
-  tooBigForParcelLocker: boolean
-  deliveryTime: string
-  nextDelivery: string
-  length: string
-  height: string
-  weight: string
-  amountInBox: number
-  state: number
-  linkToInstruction: string
-  linkToPictures: string
-  volume: string
-  categories: string[]
-  tags: string[]
-  pictures: string[]
-  updates: boolean
-  priceChanged: boolean
-  categoryMissing: boolean
+  id: string;
+  name: string;
+  provider: Providers;
+  nettPrice: string;
+  providerNettoPrice: number;
+  margin: string;
+  vat: number;
+  netProfit: number;
+  suggesterDetailPrice: number;
+  code: string;
+  tooBigForParcelLocker: boolean;
+  deliveryTime: string;
+  nextDelivery: string;
+  length: string;
+  height: string;
+  weight: string;
+  amountInBox: number;
+  state: number;
+  linkToInstruction: string;
+  linkToPictures: string;
+  volume: string;
+  categories: string[];
+  tags: string[];
+  pictures: string[];
+  updates: boolean;
+  priceChanged: boolean;
+  categoryMissing: boolean;
 }
 
 /*
@@ -157,15 +164,15 @@ export const PRODUCTS_TABLE_HEADERS = {
   updates: "updates",
   priceChanged: "price-changed",
   categoryMissing: "category-missing",
-}
+};
 
 export const PROVIDER_PRODUCTS_TABLE_HEADERS = {
   id: "id",
   name: "name",
   providerId: "providerId",
   actions: "actions",
-}
+};
 
 //////////////////////////////
 
-export const BASE_CATEGORY_URL = `${BASE_API_URL}api/category/`
+export const BASE_CATEGORY_URL = `${BASE_API_URL}api/category/`;

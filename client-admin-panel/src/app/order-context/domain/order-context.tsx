@@ -1,103 +1,103 @@
-import { BASE_API_URL } from "../../../common/consts/index"
+import { BASE_API_URL } from "../../../common/consts/index";
 
 /*
  *** Requests Types
  */
 
-export type AddOrderRequest = {}
+export type AddOrderRequest = {};
 export type AddOrderResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
 export type GetOrderRequest = {
-  id: string
-}
+  id: string;
+};
 export type GetOrderResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
 export type DeleteOrderRequest = {
-  id: string
-}
+  id: string;
+};
 export type DeleteOrderResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
 export type UpdateOrderRequest = {
-  id: string
-}
+  id: string;
+};
 export type UpdateOrderResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
-export type GetOrdersRequest = {}
+export type GetOrdersRequest = {};
 export type GetOrdersResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: Order[]
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: Order[];
+};
 
 /*
  *** Fields Types
  */
 
 export interface OrdersDataType {
-  key: string
-  lp: number | string
-  id: string
-  ownerName: string
-  ownerSurname: string
+  key: string;
+  lp: number | string;
+  id: string;
+  ownerName: string;
+  ownerSurname: string;
   basket: {
-    providerId: string
+    providerId: string;
     products: {
-      id: string
-      name: string
-      amount: string
-      shortDescription: string
-      price: string
-      totalNettoPrice: string
-      totalBruttoPrice: string
-      thubnail: string
-    }[]
-  }[]
+      id: string;
+      name: string;
+      amount: string;
+      shortDescription: string;
+      price: string;
+      totalNettoPrice: string;
+      totalBruttoPrice: string;
+      thubnail: string;
+    }[];
+  }[];
 }
 
 export interface FilterOrdersFieldType {
-  ownerName: string
-  ownerSurname: string
+  ownerName: string;
+  ownerSurname: string;
 }
 
 export interface OrderFieldType {
-  lp: number | string
-  id: string
-  ownerName: string
-  ownerSurname: string
+  lp: number | string;
+  id: string;
+  ownerName: string;
+  ownerSurname: string;
   basket: {
-    providerId: string
+    providerId: string;
     products: {
-      id: string
-      name: string
-      amount: string
-      shortDescription: string
-      price: string
-      totalNettoPrice: string
-      totalBruttoPrice: string
-      thubnail: string
-    }[]
-  }[]
+      id: string;
+      name: string;
+      amount: string;
+      shortDescription: string;
+      price: string;
+      totalNettoPrice: string;
+      totalBruttoPrice: string;
+      thubnail: string;
+    }[];
+  }[];
 }
 
 /*
@@ -109,23 +109,23 @@ export interface OrderFieldType {
  */
 
 export interface Order {
-  lp: number | string
-  id: string
-  ownerName: string
-  ownerSurname: string
+  lp: number | string;
+  id: string;
+  ownerName: string;
+  ownerSurname: string;
   basket: {
-    providerId: string
+    providerId: string;
     products: {
-      id: string
-      name: string
-      amount: string
-      shortDescription: string
-      price: string
-      totalNettoPrice: string
-      totalBruttoPrice: string
-      thubnail: string
-    }[]
-  }[]
+      id: string;
+      name: string;
+      amount: string;
+      shortDescription: string;
+      price: string;
+      totalNettoPrice: string;
+      totalBruttoPrice: string;
+      thubnail: string;
+    }[];
+  }[];
 }
 
 /*
@@ -139,13 +139,13 @@ export enum FILTER_ORDERS_INPUT_FIELDS {
 
 export const ORDERS_TABLE_HEADERS = {
   lp: "lp",
-  ownerId: "ownerId",
-  ownerName: "ownerName",
-  ownerSurname: "pwnerSurname",
+  ownerId: "owner-id",
+  ownerName: "owner-name",
+  ownerSurname: "owner-surname",
   price: "price",
   status: "status",
-}
+};
 
 //////////////////////////////
 
-export const BASE_ORDER_URL = `${BASE_API_URL}api/order/`
+export const BASE_ORDER_URL = `${BASE_API_URL}api/order/`;

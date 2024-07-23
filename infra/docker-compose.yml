@@ -1,0 +1,68 @@
+services:
+  client-store:
+    build:
+      context: ../client-store
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Map port 3000 in the container to port 3000 on the host
+    volumes:
+      - ../client-store:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      - webstore-network
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002" # Map port 3002 in the container to port 3002 on the host
+    volumes:
+      - ../backend:/app
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo_db/mongo_db`;
+      - JWT_KEY=your_jwt_secret_key
+    depends_on:
+      - mongo_db
+    networks:
+      - webstore-network
+
+  client-admin-panel:
+    build:
+      context: ../client-admin-panel
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173" # Map port 5173 in the container to port 5173 on the host
+    volumes:
+      - ../client-admin-panel:/app
+    environment:
+      - VITE_BACKEND_URL=http://localhost:3002/
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      - webstore-network
+
+  mongo_db:
+    image: mongo:8.0.0-rc13-jammy
+    container_name: mongo_db
+    restart: unless-stopped
+    env_file: ./.env
+
+    ports:
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - webstore-network
+
+networks:
+  webstore-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

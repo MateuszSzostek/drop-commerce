@@ -184,12 +184,31 @@
       "surname-label": "Surname"
     }
   },
+  "orders": {
+    "orders-list": {
+      "title": "Odrers",
+      "name-label": "Name",
+      "surname-labels": "Surname",
+      "lp-header": "Lp.",
+      "owner-id-header": "Id",
+      "owner-name-header": "Name",
+      "owner-surname-header": "Surname",
+      "price-header": "Price",
+      "status-header": "Status"
+    }
+  },
   "categories": {
     "add-category-modal": {
       "title": "Add category",
       "cancel-button": "Cancel",
       "accept-button": "Save",
       "category-name-label": "Category name"
+    },
+    "delete-category-modal": {
+      "title": "Delete category",
+      "content": "Are you sure you wanna delete this category?",
+      "cancel-button": "Cancel",
+      "accept-button": "Delete"
     }
   }
 }

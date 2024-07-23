@@ -1,0 +1,58 @@
+Arguments: 
+  /home/mateuszszoste/.nvm/versions/node/v20.2.0/bin/node /snap/node/7581/bin/yarn.js install
+
+PATH: 
+  /home/mateuszszoste/.local/bin:/home/mateuszszoste/.nvm/versions/node/v20.2.0/bin:/opt/gradle/gradle-7.4.2/bin:/home/mateuszszoste/.local/bin:/opt/gradle/gradle-7.4.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/mateuszszoste/.local/share/JetBrains/Toolbox/scripts:/home/mateuszszoste/.local/share/JetBrains/Toolbox/scripts
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.2.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  AggregateError
+      at internalConnectMultiple (node:net:1103:18)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+      at internalConnectMultiple (node:net:1161:5)
+
+npm manifest: 
+  {
+    "name": "client-store",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "react": "^18",
+      "react-dom": "^18",
+      "next": "14.2.4"
+    },
+    "devDependencies": {
+      "typescript": "^5",
+      "@types/node": "^20",
+      "@types/react": "^18",
+      "@types/react-dom": "^18",
+      "eslint": "^8",
+      "eslint-config-next": "14.2.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

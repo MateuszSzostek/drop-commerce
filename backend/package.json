@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
+    "dev": "nodemon src/index.ts",
     "test": "jest --watchAll --no-cache"
   },
   "jest": {
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.11",
     "mongoose-update-if-current": "^1.4.0",
+    "nodemon": "^3.1.4",
     "request": "^2.88.2",
     "stripe": "^8.161.0",
     "ts-node": "^10.9.2",

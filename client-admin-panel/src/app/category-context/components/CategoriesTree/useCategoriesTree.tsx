@@ -9,6 +9,7 @@ export default function useCategoriesTree() {
   const [mustApplyCategories, setMustApplyCategories] = useState<boolean>(false)
   const [selectedNodeId, setSelectedNodeId] = useState<string>("")
   const [isOpenAddCategoryModal, setIsOpenAddCategoryModal] = useState<boolean>(false)
+  const [isOpenDeleteCategoryModal, setIsOpenDeleteCategoryModal] = useState<boolean>(false)
   const [triggerApplyCategories, applyCategoriesResult] = useApplyCategoriesMutation()
 
   const {
@@ -80,6 +81,35 @@ export default function useCategoriesTree() {
     setMustApplyCategories(true)
   }
 
+  function deleteCategoryNode(parentId: string, nodeId: string) {
+    setCategoriesTree((prevTree) => {
+      const newTree = { ...prevTree };
+  
+      function traverseAndDelete(nodes: ICategoryNode[]): boolean {
+        for (let node of nodes) {
+          if (node.id === parentId) {
+            const nodeIndex = node.nodes?.findIndex((child) => child.id === nodeId);
+  
+            if (nodeIndex !== undefined && nodeIndex > -1) {
+              node.nodes?.splice(nodeIndex, 1);
+              return true;
+            }
+          }
+          if (node.nodes) {
+            if (traverseAndDelete(node.nodes)) {
+              return true;
+            }
+          }
+        }
+        return false;
+      }
+  
+      traverseAndDelete(newTree?.nodes as ICategoryNode[]);
+      return newTree;
+    });
+    setMustApplyCategories(true);
+  }
+
   const handleAppendNode = (newCategoryName: string) => {
     const newNode = {
       name: newCategoryName,
@@ -87,6 +117,10 @@ export default function useCategoriesTree() {
     }
     appendCategoryNode(selectedNodeId, newNode) // Appending to the "Puzzles" node for example
     handleCloseAddCategoryModal()
+  }
+
+  const handleDeleteNode = (categoryName:string) => {
+    deleteCategoryNode(,selectedNodeId)
   }
 
   function renderTree(node: ICategoryNode): ReactNode {
@@ -102,6 +136,11 @@ export default function useCategoriesTree() {
     setSelectedNodeId(categoryId)
   }
 
+  const handleOpenDeleteCategoryModal = (categoryId: string) => {
+    setIsOpenDeleteCategoryModal(true)
+    setSelectedNodeId(categoryId)
+  }
+
   const handleCloseAddCategoryModal = () => {
     setIsOpenAddCategoryModal(false)
   }
@@ -110,6 +149,7 @@ export default function useCategoriesTree() {
     categoriesTree,
     categoriesTreeRender,
     isOpenAddCategoryModal,
+    isOpenDeleteCategoryModal,
     renderTree,
     handleOpenAddCategoryModal,
     handleCloseAddCategoryModal,

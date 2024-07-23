@@ -15,17 +15,17 @@ const start = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
-      user: "root",
-      pass: "123456",
-      dbName: "kid",
+      //  user: "root",
+      // pass: "123456",
+      //   dbName: "mongo_db",
     });
     console.log("Connected to MongoDb");
   } catch (err) {
     console.error(err);
   }
 
-  app.listen(3000, () => {
-    console.log("Listening on port 3000!!!!!!!!");
+  app.listen(3002, () => {
+    console.log("Listening on port 3002!!!!!!!!");
   });
 };
 
