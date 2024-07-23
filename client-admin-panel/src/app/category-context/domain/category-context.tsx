@@ -51,10 +51,13 @@ export interface ICategoryNode {
     parentCategoryId: string,
     newCategoryName: string
   ) => void;
-  handleDeleteCategory?: (
-    parentCategoryId: string,
-    newCategoryName: string
-  ) => void;
+  handleDeleteCategory?: () => void;
+}
+
+export interface ITagNode {
+  name: string;
+  id: string;
+  handleDeleteTag?: () => void;
 }
 
 export type CategoriesTree = {

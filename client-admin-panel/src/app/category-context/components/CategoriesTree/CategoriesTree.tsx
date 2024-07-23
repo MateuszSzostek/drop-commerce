@@ -1,31 +1,24 @@
-import { Col, Form, Row } from "antd";
-import React from "react";
+import { Row } from "antd";
 import { useTranslation } from "react-i18next";
-import {
-  Button,
-  Checkbox,
-  FormItem,
-  FormItemStyleType,
-  Table,
-  TextInput,
-  TextInputStyleType,
-  TextStyleType,
-} from "../../../../common/components";
 import useCategoriesTree from "./useCategoriesTree";
-import { Text } from "../../../../common/components";
-
-import CategoryNode from "../CategoryNode/CategoryNode";
 import AddCategoryNodeModal from "../Modals/AddCategoryNodeModal/AddCategoryNodeModal";
 import ConfirmationModal from "../../../../common/modules/ConfirmationModal/ConfirmationModal";
+import TagNode from "../TagNode/TagNode";
 
 export default function CategoriesTree() {
   const {
-    categoriesTree,
-    isOpenAddCategoryModal,
     categoriesTreeRender,
+    isOpenAddCategoryModal,
+    isOpenDeleteCategoryModal,
+    isOpenDeleteTagModal,
+    tagsList,
     renderTree,
     handleAppendNode,
-    handleOpenAddCategoryModal,
+    handleCloseDeleteCategoryModal,
+    handleOpenDeleteTagModal,
+    handleCloseDeleteTagModal,
+    handleDeleteTagNode,
+    handleDeleteNode,
   } = useCategoriesTree();
   const [t] = useTranslation();
 
@@ -36,6 +29,15 @@ export default function CategoriesTree() {
           <div>{categoriesTreeRender?.nodes.map(renderTree)}</div>
         )}
       </Row>
+      <Row style={{ width: "100%" }} className="bring-in-anim">
+        {tagsList.map((el) => (
+          <TagNode
+            name={el?.name}
+            id={el?.id}
+            handleDeleteTag={() => handleOpenDeleteTagModal(el?.id)}
+          />
+        ))}
+      </Row>
       <AddCategoryNodeModal
         isOpen={isOpenAddCategoryModal}
         handleAppendNode={handleAppendNode}
@@ -43,11 +45,20 @@ export default function CategoriesTree() {
       <ConfirmationModal
         acceptText={t("categories.delete-category-modal.accept-button")}
         cancelText={t("categories.delete-category-modal.cancel-button")}
-        isOpen={deleteConfirmationModal}
-        handleCancel={handleDeleteKindergartenCancel}
-        handleAccept={handleDeleteKindergartenConfirmation}
+        isOpen={isOpenDeleteCategoryModal}
+        handleCancel={handleCloseDeleteCategoryModal}
+        handleAccept={handleDeleteNode}
         title={t("categories.delete-category-modal.title")}
         content={t("categories.delete-category-modal.content")}
+      />
+      <ConfirmationModal
+        acceptText={t("categories.delete-tag-modal.accept-button")}
+        cancelText={t("categories.delete-tag-modal.cancel-button")}
+        isOpen={isOpenDeleteTagModal}
+        handleCancel={handleCloseDeleteTagModal}
+        handleAccept={handleDeleteTagNode}
+        title={t("categories.delete-tag-modal.title")}
+        content={t("categories.delete-tag-modal.content")}
       />
     </>
   );
