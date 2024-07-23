@@ -1,5 +1,3 @@
-KONFIGURACJA
-- skonfigurowac ponownie git'a
 
 DEPLOY PIERWSZEGO PRODUKTU NA FRONCIE KLIENTA
 - dodac mozliwosc usuwania kategorii w module kategori
