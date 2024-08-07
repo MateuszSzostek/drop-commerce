@@ -15,8 +15,9 @@ export const requireAuth = (
   //@ts-ignore
   //console.log("TOKEN require auth: ", req.session.token);
   //@ts-ignore
+
   if (!req.session.token) {
-    console.log(req.currentUser);
+    // console.log(req);
     throw new NotAuthorizedError();
   }
 

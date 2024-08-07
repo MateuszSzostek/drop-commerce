@@ -4,6 +4,8 @@ import useCategoriesTree from "./useCategoriesTree";
 import AddCategoryNodeModal from "../Modals/AddCategoryNodeModal/AddCategoryNodeModal";
 import ConfirmationModal from "../../../../common/modules/ConfirmationModal/ConfirmationModal";
 import TagNode from "../TagNode/TagNode";
+import { Button } from "../../../../common/components";
+import AddTagNodeModal from "../Modals/AddTagNodeModal/AddTagNodeModal";
 
 export default function CategoriesTree() {
   const {
@@ -12,6 +14,7 @@ export default function CategoriesTree() {
     isOpenDeleteCategoryModal,
     isOpenDeleteTagModal,
     tagsList,
+    isOpenAddTagModal,
     renderTree,
     handleAppendNode,
     handleCloseDeleteCategoryModal,
@@ -19,6 +22,8 @@ export default function CategoriesTree() {
     handleCloseDeleteTagModal,
     handleDeleteTagNode,
     handleDeleteNode,
+    handleOpenAddTagModal,
+    handleCloseAddTagModal,
   } = useCategoriesTree();
   const [t] = useTranslation();
 
@@ -28,6 +33,11 @@ export default function CategoriesTree() {
         {categoriesTreeRender.nodes && (
           <div>{categoriesTreeRender?.nodes.map(renderTree)}</div>
         )}
+      </Row>
+      <Row style={{ width: "100%" }} className="bring-in-anim">
+        <Button onClick={handleOpenAddTagModal}>
+          {t("categories.add-tag-button")}
+        </Button>
       </Row>
       <Row style={{ width: "100%" }} className="bring-in-anim">
         {tagsList.map((el) => (
@@ -41,6 +51,10 @@ export default function CategoriesTree() {
       <AddCategoryNodeModal
         isOpen={isOpenAddCategoryModal}
         handleAppendNode={handleAppendNode}
+      />
+      <AddTagNodeModal
+        isOpen={isOpenAddTagModal}
+        onSuccess={handleCloseAddTagModal}
       />
       <ConfirmationModal
         acceptText={t("categories.delete-category-modal.accept-button")}

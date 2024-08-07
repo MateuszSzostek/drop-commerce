@@ -1,30 +1,38 @@
-import { FormProps } from "antd"
-import { useGetProductQuery, useAddProductMutation } from "../../services/productsSlice"
-import { IkonkaProduct, ProductFieldType } from "../../domain/products-context"
-import { ROUTES } from "../../../routing-context/domain/router-context"
-import { useNavigate, useParams } from "react-router-dom"
-import { useForm, useWatch } from "antd/es/form/Form"
-import { useSearchParams } from "react-router-dom"
-import { useLazyGetIkonkProductQuery } from "../../services/ikonkaSlice"
-import { useGetCategoriesQuery } from "../../../category-context/services/categorySlice"
-import { useEffect, useState } from "react"
-import { SelectOptions } from "../../../../common/types"
+import { FormProps } from "antd";
+import {
+  useGetProductQuery,
+  useAddProductMutation,
+} from "../../services/productsSlice";
+import { IkonkaProduct, ProductFieldType } from "../../domain/products-context";
+import { ROUTES } from "../../../routing-context/domain/router-context";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm, useWatch } from "antd/es/form/Form";
+import { useSearchParams } from "react-router-dom";
+import { useLazyGetIkonkProductQuery } from "../../services/ikonkaSlice";
+import { useGetCategoriesQuery } from "../../../category-context/services/categorySlice";
+import { useEffect, useState } from "react";
+import { SelectOptions } from "../../../../common/types";
+import { useGetAllTagsQuery } from "../../../category-context/services/categorySlice";
+import { ITagNode } from "../../../category-context/domain/category-context";
 
 export default function useProduct() {
-  const [productForm] = useForm<ProductFieldType>()
-  const navigate = useNavigate()
-  const [addProductMutation] = useAddProductMutation()
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [initialProviderProductValues, setInitialProviderProductValues] = useState<{ name: string; value: string }[]>([])
-  const [providerResponse, setProviderResponse] = useState<IkonkaProduct>()
-  const [triggerGetIkonkaProduct, getIkonkaProductResult] = useLazyGetIkonkProductQuery({})
-  const [categoriesSelectOptions, setCategoriesSelectOptions] = useState<SelectOptions>([])
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [selectedPictures, setSelectedPictures] = useState<string[]>([])
-  const selectedPicturesWatcher = useWatch("pictures", productForm)
+  const [productForm] = useForm<ProductFieldType>();
+  const navigate = useNavigate();
+  const [addProductMutation] = useAddProductMutation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [initialProviderProductValues, setInitialProviderProductValues] =
+    useState<{ name: string; value: string }[]>([]);
+  const [providerResponse, setProviderResponse] = useState<IkonkaProduct>();
+  const [triggerGetIkonkaProduct, getIkonkaProductResult] =
+    useLazyGetIkonkProductQuery({});
+  const [categoriesSelectOptions, setCategoriesSelectOptions] =
+    useState<SelectOptions>([]);
+  const [tagsSelectOptions, setTagsSelectOptions] = useState<SelectOptions>([]);
+  const [selectedPictures, setSelectedPictures] = useState<string[]>([]);
+  const selectedPicturesWatcher = useWatch("pictures", productForm);
 
-  console.warn(searchParams.get("providerProductId"))
-  console.warn(searchParams.get("selectedProviderId"))
+  console.warn(searchParams.get("providerProductId"));
+  console.warn(searchParams.get("selectedProviderId"));
 
   const {
     data: product,
@@ -37,8 +45,8 @@ export default function useProduct() {
     {
       refetchOnMountOrArgChange: true,
       skip: false,
-    },
-  )
+    }
+  );
 
   const {
     data: categories,
@@ -49,8 +57,27 @@ export default function useProduct() {
     {
       refetchOnMountOrArgChange: true,
       skip: false,
-    },
-  )
+    }
+  );
+
+  const { data: tags, isLoading: isLoadingTags } = useGetAllTagsQuery(
+    {},
+    {
+      refetchOnMountOrArgChange: true,
+      skip: false,
+    }
+  );
+
+  useEffect(() => {
+    if (!isLoadingTags && tags) {
+      const newTagsList: SelectOptions = tags?.data?.map((tag) => ({
+        value: tag?.id,
+        label: tag?.name,
+      }));
+
+      setTagsSelectOptions(newTagsList);
+    }
+  }, [isLoadingTags, tags]);
 
   useEffect(() => {
     if (categories && !isLoadingCategories) {
@@ -58,83 +85,98 @@ export default function useProduct() {
         categories?.data?.categoriesList.map((el) => ({
           value: el.name,
           label: el.name,
-        })),
-      )
+        }))
+      );
     }
-  }, [isLoadingCategories, categories])
+  }, [isLoadingCategories, categories]);
 
   useEffect(() => {
-    if (searchParams.get("selectedProviderId") === "ikonka" && searchParams.get("providerProductId") !== null) {
-      getIkonkaProductData(searchParams.get("providerProductId") as string)
+    if (
+      searchParams.get("selectedProviderId") === "ikonka" &&
+      searchParams.get("providerProductId") !== null
+    ) {
+      getIkonkaProductData(searchParams.get("providerProductId") as string);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    console.log(selectedPicturesWatcher)
+    console.warn(selectedPicturesWatcher);
     if (selectedPicturesWatcher) {
-      const newPictures = [...selectedPictures, selectedPicturesWatcher.toString()]
-      const newPicturesSet = [...new Set(newPictures)]
-      setSelectedPictures(newPicturesSet as string[])
+      let newPictures;
+
+      if (!Array.isArray(selectedPicturesWatcher)) {
+        newPictures = [...selectedPictures, selectedPicturesWatcher.toString()];
+      } else {
+        newPictures = [...selectedPictures, ...selectedPicturesWatcher];
+      }
+
+      console.warn(newPictures);
+
+      const newPicturesSet = [...new Set(newPictures)];
+      setSelectedPictures(newPicturesSet as string[]);
     }
-  }, [selectedPicturesWatcher])
+  }, [selectedPicturesWatcher]);
 
   const getIkonkaProductData = async (id: string) => {
-    const result = await triggerGetIkonkaProduct({ id })
+    const result = await triggerGetIkonkaProduct({ id });
     if (result.isSuccess) {
       setInitialProviderProductValues(
         Object.keys(result.data.data).map((key) => ({
           name: key,
           value: result?.data?.data[key] as keyof IkonkaProduct as string,
-        })),
-      )
+        }))
+      );
 
-      setProviderResponse(result?.data?.data)
+      setProviderResponse(result?.data?.data);
     }
-  }
+  };
 
   const handleRemovePicture = (picture: string) => {
-    const newPictures = selectedPictures.filter((el) => el !== picture)
-    setSelectedPictures(newPictures)
-  }
+    const newPictures = selectedPictures.filter((el) => el !== picture);
+    setSelectedPictures(newPictures);
+  };
 
   const onFinish: FormProps<ProductFieldType>["onFinish"] = async (values) => {
-    const requestValues = values
-    requestValues.pictures = selectedPictures
+    const requestValues = values;
+    requestValues.pictures = selectedPictures;
 
-    requestValues.tooBigForParcelLocker = values?.tooBigForParcelLocker === "tak" ? true : false
+    requestValues.tooBigForParcelLocker =
+      values?.tooBigForParcelLocker === "tak" ? true : false;
 
-    console.log(requestValues)
+    console.log(requestValues);
 
-    const result = await addProductMutation(values)
+    const result = await addProductMutation(values);
 
     if ("data" in result && result.data.status === "success") {
-      navigate(`/${ROUTES.app}/${ROUTES.products}`)
+      navigate(`/${ROUTES.app}/${ROUTES.products}`);
     }
-  }
-  const onFinishFailed: FormProps<ProductFieldType>["onFinishFailed"] = (errorInfo): void => {
-    console.log("Failed:", errorInfo)
-  }
+  };
+  const onFinishFailed: FormProps<ProductFieldType>["onFinishFailed"] = (
+    errorInfo
+  ): void => {
+    console.log("Failed:", errorInfo);
+  };
 
   const handleProductFieldsChange = () => {
-    const margin = productForm.getFieldValue("margin")
-    const providerNettoPrice = productForm.getFieldValue("providerNettoPrice")
-    const vat = productForm.getFieldValue("vat")
+    const margin = productForm.getFieldValue("margin");
+    const providerNettoPrice = productForm.getFieldValue("providerNettoPrice");
+    const vat = productForm.getFieldValue("vat");
 
     if (margin && providerNettoPrice) {
-      const netProfit = (margin / 100) * providerNettoPrice
-      const netPrice = parseFloat(netProfit) + parseFloat(providerNettoPrice)
+      const netProfit = (margin / 100) * providerNettoPrice;
+      const netPrice = parseFloat(netProfit) + parseFloat(providerNettoPrice);
 
-      productForm.setFieldValue("netPrice", netPrice.toFixed(2))
-      productForm.setFieldValue("netProfit", netProfit.toFixed(2))
+      productForm.setFieldValue("netPrice", netPrice.toFixed(2));
+      productForm.setFieldValue("netProfit", netProfit.toFixed(2));
 
       if (vat) {
-        const vatPrice = netPrice * (vat / 100)
-        const grossPrice = vatPrice + netPrice
+        const vatPrice = netPrice * (vat / 100);
+        const grossPrice = vatPrice + netPrice;
 
-        productForm.setFieldValue("grossPrice", grossPrice.toFixed(2))
+        productForm.setFieldValue("grossPrice", grossPrice.toFixed(2));
       }
     }
-  }
+  };
 
   return {
     productForm,
@@ -143,9 +185,10 @@ export default function useProduct() {
     categoriesSelectOptions,
     providerResponse,
     selectedPictures,
+    tagsSelectOptions,
     onFinish,
     onFinishFailed,
     handleProductFieldsChange,
     handleRemovePicture,
-  }
+  };
 }

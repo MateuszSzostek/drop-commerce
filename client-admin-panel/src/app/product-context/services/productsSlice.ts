@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   AddProductRequest,
   AddProductResponse,
@@ -14,13 +14,16 @@ import {
   GetProductsResponse,
   UpdateProductRequest,
   UpdateProductResponse,
-} from "../domain/products-context"
-import { BASE_PRODUCT_URL } from "../domain/products-context"
-import { ValidationErrorsResponse } from "../../../common/types"
+} from "../domain/products-context";
+import { BASE_PRODUCT_URL } from "../domain/products-context";
+import { ValidationErrorsResponse } from "../../../common/types";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_PRODUCT_URL, credentials: "include" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_PRODUCT_URL,
+    credentials: "include",
+  }),
   tagTypes: ["Products"],
   endpoints: (builder) => ({
     addProduct: builder.mutation<AddProductResponse, AddProductRequest>({
@@ -33,7 +36,10 @@ export const productsApi = createApi({
       transformResponse: (response: AddProductResponse) => response,
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
-    applyPendingChanges: builder.query<ApplyPendingChangesResponse, ApplyPendingChangesRequest>({
+    applyPendingChanges: builder.query<
+      ApplyPendingChangesResponse,
+      ApplyPendingChangesRequest
+    >({
       query: () => ({
         url: `/apply-pending-changes`,
         method: "GET",
@@ -41,7 +47,10 @@ export const productsApi = createApi({
       transformResponse: (response: ApplyPendingChangesResponse) => response,
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
-    checkForUpdates: builder.query<CheckForUpdatesResponse, CheckForUpdatesRequest>({
+    checkForUpdates: builder.query<
+      CheckForUpdatesResponse,
+      CheckForUpdatesRequest
+    >({
       query: () => ({
         url: `/apply-pending-changes`,
         method: "GET",
@@ -49,7 +58,10 @@ export const productsApi = createApi({
       transformResponse: (response: CheckForUpdatesResponse) => response,
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
-    deleteChild: builder.mutation<DeleteProductResponse, DeleteProductRequest>({
+    deleteProduct: builder.mutation<
+      DeleteProductResponse,
+      DeleteProductRequest
+    >({
       query: ({ id }) => ({
         url: `/${id}`,
         method: "DELETE",
@@ -59,9 +71,10 @@ export const productsApi = createApi({
     }),
     getProducts: builder.query<GetProductsResponse, GetProductsRequest>({
       query: () => ({
-        url: `/get-all`,
+        url: `/get-all?page=0&limit=1000`,
         method: "GET",
       }),
+      providesTags: ["Products"],
       transformResponse: (response: GetProductsResponse) => response,
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
@@ -73,7 +86,10 @@ export const productsApi = createApi({
       transformResponse: (response: GetProductResponse) => response,
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
-    updateProduct: builder.mutation<UpdateProductResponse, UpdateProductRequest>({
+    updateProduct: builder.mutation<
+      UpdateProductResponse,
+      UpdateProductRequest
+    >({
       query: ({ id }) => ({
         url: `/${id}`,
         method: "PUT",
@@ -82,13 +98,13 @@ export const productsApi = createApi({
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
   }),
-})
+});
 
 export const {
   useAddProductMutation,
   useApplyPendingChangesQuery,
   useCheckForUpdatesQuery,
-  useDeleteChildMutation,
+  useDeleteProductMutation,
   useGetProductsQuery,
   useGetProductQuery,
   useLazyApplyPendingChangesQuery,
@@ -96,4 +112,4 @@ export const {
   useLazyGetProductsQuery,
   useLazyGetProductQuery,
   useUpdateProductMutation,
-} = productsApi
+} = productsApi;

@@ -1,15 +1,15 @@
-.category-node {
-  background-color: goldenrod;
+.tag-node {
+  background-color: greenyellow;
   border: 1px solid palevioletred;
   margin-bottom: 6px;
   margin-right: 12px;
 }
 
-.category-node__marginer {
+.tag-node__marginer {
   margin-left: 24px;
 }
 
-.category-node__name {
+.tag-node__name {
   width: 100%;
   padding: 6px;
   display: flex;

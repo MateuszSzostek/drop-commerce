@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { IkonkaProductAttrs } from "./ikonkaProduct";
+import { ParsedQs } from "qs";
 
 interface ProductAttrs {
   providerIdentifier: string;
@@ -24,6 +25,7 @@ interface ProductAttrs {
   code: string;
   linkToInstruction: string;
   categories: string[];
+  tags: string[];
   volume: string;
   pictures: string[];
   pendingUpdates: {};
@@ -58,6 +60,7 @@ export interface ProductDoc extends mongoose.Document {
   code: string;
   linkToInstruction: string;
   categories: string[];
+  tags: string[];
   volume: string;
   pictures: string[];
   pendingUpdates: {};
@@ -155,6 +158,10 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    tags: {
+      type: Array<String>,
+      required: true,
+    },
     volume: {
       type: String,
       required: false,
@@ -191,6 +198,14 @@ const productSchema = new mongoose.Schema(
 productSchema.statics.build = (attrs: ProductAttrs) => {
   return new Product(attrs);
 };
+
+export interface ProductQuery extends ParsedQs {
+  page?: string;
+  limit?: string;
+  name?: string;
+  categories?: string;
+  tag?: string;
+}
 
 const Product = mongoose.model<ProductDoc, ProductModel>(
   "Product",

@@ -39,11 +39,14 @@ router.post(
       code = "",
       linkToInstruction = "",
       categories = "",
+      tags = [],
       volume = "",
       pictures = [],
       pendingUpdates = [],
       mirrorProductIds = [],
     } = req.body;
+
+    console.warn(req.body);
 
     const product = await Product.findOne({
       providerIdentifier,
@@ -57,8 +60,6 @@ router.post(
     const providerSnapshot = await IkonkaProduct.findOne({
       kod: providerIdentifier,
     });
-
-    console.log(providerSnapshot);
 
     //check is wholesealer product snapshot has been found
     if (!providerSnapshot) {
@@ -88,6 +89,7 @@ router.post(
       code,
       linkToInstruction,
       categories,
+      tags,
       volume,
       pictures,
       pendingUpdates,
@@ -96,6 +98,15 @@ router.post(
     });
 
     await newProduct.save();
+
+    const providerProduct = await IkonkaProduct.findOne({
+      kod: providerIdentifier,
+    });
+
+    if (providerProduct) {
+      providerProduct.set({ alreadyInShop: true });
+      await providerProduct?.save();
+    }
 
     const response: ResponseType<ProductDoc> = {
       status: "success",

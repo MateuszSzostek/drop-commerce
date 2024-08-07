@@ -1,178 +1,179 @@
-import { BASE_API_URL } from "../../../common/consts/index"
-import { PaginatedItems, SelectOptions } from "../../../common/types"
+import { BASE_API_URL } from "../../../common/consts/index";
+import { PaginatedItems, SelectOptions } from "../../../common/types";
 
 /*
  *** Requests Types
  */
 
-export type AddProductRequest = {}
+export type AddProductRequest = {};
 export type AddProductResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
 export type GetProductRequest = {
-  id: string
-}
+  id: string;
+};
 export type GetProductResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
 export type DeleteProductRequest = {
-  id: string
-}
+  id: string;
+};
 export type DeleteProductResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
 export type UpdateProductRequest = {
-  id: string
-}
+  id: string;
+};
 export type UpdateProductResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
-export type GetProductsRequest = {}
+export type GetProductsRequest = {};
 export type GetProductsResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: Product[]
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: { items: Product[] };
+};
 
-export type CheckForUpdatesRequest = {}
+export type CheckForUpdatesRequest = {};
 export type CheckForUpdatesResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
-export type ApplyPendingChangesRequest = {}
+export type ApplyPendingChangesRequest = {};
 export type ApplyPendingChangesResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: {}
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {};
+};
 
-export type FetchAllIkonkaProductsRequest = {}
+export type FetchAllIkonkaProductsRequest = {};
 
-export type FetchAllIkonkaProductsResponse = {}
+export type FetchAllIkonkaProductsResponse = {};
 
 export type GetIkonkaProductsRequest = {
-  page?: string
-  limit?: string
-  name?: string
-  providerProductId?: string
-}
+  page?: string;
+  limit?: string;
+  name?: string;
+  providerProductId?: string;
+  existsInProviderStore: boolean;
+};
 
 export type GetIkonkaProductsResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: PaginatedItems<IkonkaProduct>
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: PaginatedItems<IkonkaProduct>;
+};
 
 export type GetIkonkaProductRequest = {
-  id: string
-}
+  id: string;
+};
 
 export type GetIkonkaProductResponse = {
-  status: "success" | "error"
-  code: number
-  message: string
-  data: IkonkaProduct
-}
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: IkonkaProduct;
+};
 
 /*
  *** Fields Types
  */
 
 export interface ProductsDataType {
-  key: string
-  lp: number | string
-  id: string
-  provider: string
-  name: string
-  updates: boolean
-  priceChanged: boolean
-  categoryMissing: boolean
+  key: string;
+  lp: number | string;
+  id: string;
+  provider: string;
+  name: string;
+  updates: boolean;
+  priceChanged: boolean;
+  categoryMissing: boolean;
 }
 
 export interface ProviderProductsDataType {
-  key: string
-  id: string
-  providerId: string
-  name: string
-  alreadyInShop: boolean
+  key: string;
+  id: string;
+  providerId: string;
+  name: string;
+  alreadyInShop: boolean;
 }
 
 export interface FilterProductsFieldType {
-  name: string
-  updates: boolean
-  priceChanged: boolean
-  categoryMissing: boolean
+  name: string;
+  updates: boolean;
+  priceChanged: boolean;
+  categoryMissing: boolean;
 }
 
 export interface ProductFieldType {
-  id: string
-  name: string
-  provider: Providers
-  nettPrice: string
-  providerNettoPrice: number
-  margin: string
-  vat: number
-  netProfit: number
-  suggesterDetailPrice: number
-  code: string
-  tooBigForParcelLocker: string | boolean
-  deliveryTime: string
-  nextDelivery: string
-  length: string
-  height: string
-  weight: string
-  amountInBox: number
-  state: number
-  linkToInstruction: string
-  linkToPictures: string
-  volume: string
-  categories: string[]
-  tags: string[]
-  pictures: string[]
+  id: string;
+  name: string;
+  provider: Providers;
+  nettPrice: string;
+  providerNettoPrice: number;
+  margin: string;
+  vat: number;
+  netProfit: number;
+  suggesterDetailPrice: number;
+  code: string;
+  tooBigForParcelLocker: string | boolean;
+  deliveryTime: string;
+  nextDelivery: string;
+  length: string;
+  height: string;
+  weight: string;
+  amountInBox: number;
+  state: number;
+  linkToInstruction: string;
+  linkToPictures: string;
+  volume: string;
+  categories: string[];
+  tags: string[];
+  pictures: string[];
 }
 
 export type IkonkaProduct = {
-  _id: string
-  kod: string
-  kod_kreskowy: string
-  stan: string
-  vat: number
-  cena: string
-  nazwa: string
-  kategoria: string
-  opis: string
-  opis_krotki: string
-  zdjecia: string[]
-  czas_dostawy: string
-  sztuk_w_kartonie: string
-  najblizsza_dostawa: string
-  objetosc: string
-  waga: string
-  zdp: string
-  alreadyInShop: boolean
-}
+  _id: string;
+  kod: string;
+  kod_kreskowy: string;
+  stan: string;
+  vat: number;
+  cena: string;
+  nazwa: string;
+  kategoria: string;
+  opis: string;
+  opis_krotki: string;
+  zdjecia: string[];
+  czas_dostawy: string;
+  sztuk_w_kartonie: string;
+  najblizsza_dostawa: string;
+  objetosc: string;
+  waga: string;
+  zdp: string;
+  alreadyInShop: boolean;
+};
 
 /*
  *** Components Props Types
@@ -185,40 +186,40 @@ export type IkonkaProduct = {
 export const sexSelectOptions: SelectOptions = [
   { value: "male", label: "Chlopiec" },
   { value: "female", label: "Dziewczynka" },
-]
+];
 
 export enum Providers {
   IKONKA = "IKONKA",
 }
 
 export interface Product {
-  id: string
-  name: string
-  provider: Providers
-  nettPrice: string
-  providerNettoPrice: number
-  margin: string
-  vat: number
-  netProfit: number
-  suggesterDetailPrice: number
-  code: string
-  tooBigForParcelLocker: boolean
-  deliveryTime: string
-  nextDelivery: string
-  length: string
-  height: string
-  weight: string
-  amountInBox: number
-  state: number
-  linkToInstruction: string
-  linkToPictures: string
-  volume: string
-  categories: string[]
-  tags: string[]
-  pictures: string[]
-  pendingUpdates: string[]
-  priceChanged: boolean
-  categoryMissing: boolean
+  id: string;
+  name: string;
+  provider: Providers;
+  nettPrice: string;
+  providerNettoPrice: number;
+  margin: string;
+  vat: number;
+  netProfit: number;
+  suggesterDetailPrice: number;
+  code: string;
+  tooBigForParcelLocker: boolean;
+  deliveryTime: string;
+  nextDelivery: string;
+  length: string;
+  height: string;
+  weight: string;
+  amountInBox: number;
+  state: number;
+  linkToInstruction: string;
+  linkToPictures: string;
+  volume: string;
+  categories: string[];
+  tags: string[];
+  pictures: string[];
+  pendingUpdates: string[];
+  priceChanged: boolean;
+  categoryMissing: boolean;
 }
 
 /*
@@ -236,6 +237,7 @@ export enum FILTER_PRODUCTS_INPUT_FIELDS {
 export enum FILTER_PROVIDER_PRODUCTS_INPUT_FIELDS {
   name = "name",
   providerProductId = "providerProductId",
+  existInProviderStore = "existInProviderStore",
 }
 
 export enum PRODUCT_INPUT_FIELDS {
@@ -302,16 +304,16 @@ export const PRODUCTS_TABLE_HEADERS = {
   updates: "updates",
   priceChanged: "price-changed",
   categoryMissing: "category-missing",
-}
+};
 
 export const PROVIDER_PRODUCTS_TABLE_HEADERS = {
   id: "id",
   name: "name",
   providerId: "provider-id",
   actions: "provider-actions",
-}
+};
 
 //////////////////////////////
 
-export const BASE_PRODUCT_URL = `${BASE_API_URL}api/product/`
-export const BASE_IKONKA_URL = `${BASE_API_URL}api/ikonka/`
+export const BASE_PRODUCT_URL = `${BASE_API_URL}api/product/`;
+export const BASE_IKONKA_URL = `${BASE_API_URL}api/ikonka/`;

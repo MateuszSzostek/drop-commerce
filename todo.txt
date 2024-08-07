@@ -1,8 +1,10 @@
 
 DEPLOY PIERWSZEGO PRODUKTU NA FRONCIE KLIENTA
-- dodac mozliwosc usuwania kategorii w module kategori
-- naprawic blad powodujacy ze podczas przenoszenia zdjec z formatki ikonki nie sa one usuwane z jej listy
-- dodac obsluge tagow produktow
++ dodac mozliwosc usuwania kategorii w module kategori
++ naprawic blad powodujacy ze podczas przenoszenia zdjec z formatki ikonki nie sa one usuwane z jej listy
++ dodac obsluge tagow produktow
+- wykluczyc z listy produktow providera produkty ktore sa w sklepie
+- dodac walidacje wymaganych kontrolek w formatce produktow
 - podlaczyc front klienta do produktow z backendu
 
 DEVELOPMENT EXPIERENCE

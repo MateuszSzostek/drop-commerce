@@ -8,6 +8,8 @@ import CategoryNode from "../CategoryNode/CategoryNode";
 import {
   useGetCategoriesQuery,
   useApplyCategoriesMutation,
+  useGetAllTagsQuery,
+  useDeleteTagMutation,
 } from "../../services/categorySlice";
 
 export default function useCategoriesTree() {
@@ -22,12 +24,14 @@ export default function useCategoriesTree() {
   const [selectedNodeId, setSelectedNodeId] = useState<string>("");
   const [isOpenAddCategoryModal, setIsOpenAddCategoryModal] =
     useState<boolean>(false);
+  const [isOpenAddTagModal, setIsOpenAddTagModal] = useState<boolean>(false);
   const [isOpenDeleteCategoryModal, setIsOpenDeleteCategoryModal] =
     useState<boolean>(false);
   const [isOpenDeleteTagModal, setIsOpenDeleteTagModal] =
     useState<boolean>(false);
   const [triggerApplyCategories, applyCategoriesResult] =
     useApplyCategoriesMutation();
+  const [deleteTag, deleteTagResult] = useDeleteTagMutation();
 
   const { data: categories, isLoading: isLoadingCategories } =
     useGetCategoriesQuery(
@@ -37,6 +41,25 @@ export default function useCategoriesTree() {
         skip: false,
       }
     );
+
+  const { data: tags, isLoading: isLoadingTags } = useGetAllTagsQuery(
+    {},
+    {
+      refetchOnMountOrArgChange: true,
+      skip: false,
+    }
+  );
+
+  useEffect(() => {
+    if (!isLoadingTags && tags) {
+      const newTagsList: ITagNode[] = tags?.data?.map((tag) => ({
+        id: tag?.id,
+        name: tag?.name,
+      }));
+
+      setTagsList(newTagsList);
+    }
+  }, [isLoadingTags, tags]);
 
   useEffect(() => {
     if (
@@ -148,7 +171,13 @@ export default function useCategoriesTree() {
     deleteCategoryNode(selectedNodeId);
   };
 
-  const handleDeleteTagNode = () => {};
+  const handleDeleteTagNode = async () => {
+    const result = await deleteTag({ id: selectedNodeId });
+
+    if ("data" in result) {
+      handleCloseDeleteTagModal();
+    }
+  };
 
   function renderTree(node: ICategoryNode): ReactNode {
     return (
@@ -173,6 +202,14 @@ export default function useCategoriesTree() {
     setIsOpenAddCategoryModal(false);
   };
 
+  const handleOpenAddTagModal = () => {
+    setIsOpenAddTagModal(true);
+  };
+
+  const handleCloseAddTagModal = () => {
+    setIsOpenAddTagModal(false);
+  };
+
   const handleOpenDeleteCategoryModal = (categoryId: string) => {
     setIsOpenDeleteCategoryModal(true);
     setSelectedNodeId(categoryId);
@@ -192,21 +229,20 @@ export default function useCategoriesTree() {
   };
 
   return {
-    categoriesTree,
     categoriesTreeRender,
     isOpenAddCategoryModal,
     isOpenDeleteCategoryModal,
     isOpenDeleteTagModal,
     tagsList,
+    isOpenAddTagModal,
     renderTree,
-    handleOpenAddCategoryModal,
-    handleCloseAddCategoryModal,
     handleAppendNode,
-    handleOpenDeleteCategoryModal,
     handleCloseDeleteCategoryModal,
     handleOpenDeleteTagModal,
     handleCloseDeleteTagModal,
     handleDeleteTagNode,
     handleDeleteNode,
+    handleOpenAddTagModal,
+    handleCloseAddTagModal,
   };
 }

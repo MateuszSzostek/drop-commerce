@@ -30,12 +30,56 @@ export type GetCategoriesResponse = {
   };
 };
 
+export type AddTagRequest = {
+  name: string;
+};
+
+export type AddTagResponse = {
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {
+    name: string;
+    id: string;
+  };
+};
+
+export type DeleteTagRequest = {
+  id: string;
+};
+
+export type DeleteTagResponse = {
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {
+    name: string;
+    id: string;
+  };
+};
+
+export type GetAllTagsRequest = {};
+
+export type GetAllTagsResponse = {
+  status: "success" | "error";
+  code: number;
+  message: string;
+  data: {
+    name: string;
+    id: string;
+  }[];
+};
+
 /*
  *** Fields Types
  */
 
 export type AddCategoryFormFieldType = {
   categoryName: string;
+};
+
+export type AddTagFormFieldType = {
+  tagName: string;
 };
 
 /*
@@ -67,6 +111,11 @@ export type CategoriesTree = {
 export type AddCategoryNodeModalProps = {
   isOpen: boolean;
   handleAppendNode: (newCategoryName: string) => void;
+};
+
+export type AddTagNodeModalProps = {
+  isOpen: boolean;
+  onSuccess: () => void;
 };
 
 /*
@@ -131,6 +180,10 @@ export enum FILTER_PROVIDER_PRODUCTS_INPUT_FIELDS {
 
 export enum CATEGORY_INPUT_FIELDS {
   categoryName = "categoryName",
+}
+
+export enum TAG_INPUT_FIELDS {
+  tagName = "tagName",
 }
 
 export enum IKONKA_INPUT_FIELDS {

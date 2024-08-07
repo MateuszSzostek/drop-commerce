@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { ITagNode } from "../../domain/category-context";
-import "./agNode.styles.scss";
+import "./TagNode.styles.scss";
 
 export default function TagNode({
   name,

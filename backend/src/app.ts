@@ -28,6 +28,10 @@ import { errorHandler } from "./middlewares/error-handler";
 import { getCategoriesRouter } from "./controllers/category/get-categories";
 import { applyCategoriesRouter } from "./controllers/category/apply-categories";
 
+import { addTagRouter } from "./controllers/category/add-tag";
+import { deleteTagRoute } from "./controllers/category/delete-tag";
+import { getAllTagRouter } from "./controllers/category/get-all-tags";
+
 import { ApolloServer, gql } from "apollo-server-express";
 //import resolvers from "./graphql/resolvers";
 
@@ -61,7 +65,11 @@ app.use(
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3002",
+      "http://backend:3002",
+    ],
     credentials: true,
   })
 );
@@ -85,6 +93,10 @@ app.use(getIkonkaProductRouter);
 
 app.use(applyCategoriesRouter);
 app.use(getCategoriesRouter);
+
+app.use(addTagRouter);
+app.use(deleteTagRoute);
+app.use(getAllTagRouter);
 
 app.all("*", async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");

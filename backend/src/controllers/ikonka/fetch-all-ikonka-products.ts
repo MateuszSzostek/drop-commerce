@@ -27,7 +27,7 @@ router.get(
                 const newIkonkaProduct = IkonkaProduct.build({
                   kod: ikonkaProduct?.kod || "",
                   kod_kreskowy: ikonkaProduct?.kod_kreskowy || "",
-                  stan: ikonkaProduct?.stan || "",
+                  stan: parseInt(ikonkaProduct?.stan.toString()) || 0,
                   vat: ikonkaProduct?.vat || 23,
                   cena: ikonkaProduct?.cena || "",
                   nazwa: ikonkaProduct?.nazwa || "",
@@ -49,7 +49,7 @@ router.get(
                 existingIkonkaProduct.update({
                   kod: ikonkaProduct?.kod || "",
                   kod_kreskowy: ikonkaProduct?.kod_kreskowy || "",
-                  stan: ikonkaProduct?.stan || "",
+                  stan: parseInt(ikonkaProduct?.stan.toString()) || 0,
                   vat: ikonkaProduct?.vat || 23,
                   cena: ikonkaProduct?.cena || "",
                   nazwa: ikonkaProduct?.nazwa || "",

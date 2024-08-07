@@ -22,35 +22,44 @@ router.get(
       limit = "10",
       name = "",
       providerProductId = "",
+      existsInProviderStore = true,
     } = req.query;
 
     const pageNumber = parseInt(page, 10);
     const limitNumber = parseInt(limit, 10);
 
-    console.warn(pageNumber);
-    console.warn(limitNumber);
+    const matchConditions: any = {
+      nazwa: { $regex: name, $options: "i" },
+      kod: { $regex: providerProductId, $options: "i" },
+      alreadyInShop: false,
+    };
+
+    if (existsInProviderStore === "true") {
+      matchConditions.$expr = {
+        $gt: [{ $toDouble: "$stan" }, 0], // Convert 'stan' to a number before comparing
+      };
+    }
 
     try {
       const ikonkaProducts = await IkonkaProduct.aggregate([
         {
-          $match: {
-            nazwa: { $regex: name, $options: "i" },
-            kod: { $regex: providerProductId, $options: "i" },
-          },
+          $match: matchConditions,
         },
+        /*
         {
           $skip: ((pageNumber as number) - 1) * limitNumber,
         },
         {
           $limit: limitNumber,
         },
+        */
       ]);
-
-      console.log("HERE");
 
       const totalProducts = await IkonkaProduct.countDocuments({
         nazwa: { $regex: name, $options: "i" },
       });
+
+      ikonkaProducts.forEach((el) => {});
 
       const response: ResponseType<PaginatedItems<IkonkaProductDoc>> = {
         status: "success",

@@ -4,7 +4,7 @@ import { ParsedQs } from "qs";
 export interface IkonkaProductAttrs {
   kod: string;
   kod_kreskowy: string;
-  stan: string;
+  stan: number;
   vat: number;
   cena: string;
   nazwa: string;
@@ -28,7 +28,7 @@ interface IkonkaProductModel extends mongoose.Model<IkonkaProductDoc> {
 export interface IkonkaProductDoc extends mongoose.Document {
   kod: string;
   kod_kreskowy: string;
-  stan: string;
+  stan: number;
   vat: number;
   cena: string;
   nazwa: string;
@@ -57,7 +57,7 @@ const ikonkaProductSchema = new mongoose.Schema(
       required: false,
     },
     stan: {
-      type: String,
+      type: Number,
       required: true,
     },
     vat: {

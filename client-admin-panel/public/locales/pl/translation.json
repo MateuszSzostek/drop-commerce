@@ -103,7 +103,8 @@
       "add-product-button": "Add Product",
       "providers-title": "Provider Products",
       "provider-product-name-label": "Provider Product Name",
-      "provider-product-id-label": "Provider Product Id"
+      "provider-product-id-label": "Provider Product Id",
+      "exists-in-provider-store-label": "Exists in Provider Store"
     },
     "product": {
       "title": "Product",
@@ -198,6 +199,7 @@
     }
   },
   "categories": {
+    "add-tag-button": "Add tag",
     "add-category-modal": {
       "title": "Add category",
       "cancel-button": "Cancel",
@@ -207,6 +209,18 @@
     "delete-category-modal": {
       "title": "Delete category",
       "content": "Are you sure you wanna delete this category?",
+      "cancel-button": "Cancel",
+      "accept-button": "Delete"
+    },
+    "add-tag-modal": {
+      "title": "Add tag",
+      "tag-name-label": "Tag name",
+      "cancel-button": "Cancel",
+      "save-button": "Save"
+    },
+    "delete-tag-modal": {
+      "title": "Add tag",
+      "content": "Are you sure you wanna delete this tag?",
       "cancel-button": "Cancel",
       "accept-button": "Delete"
     }
