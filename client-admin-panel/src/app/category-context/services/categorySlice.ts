@@ -47,7 +47,6 @@ export const categoryApi = createApi({
 
     addTag: builder.mutation<AddTagResponse, AddTagRequest>({
       query: ({ name }) => {
-        console.warn(name);
         return {
           url: `/add-tag`,
           method: "POST",

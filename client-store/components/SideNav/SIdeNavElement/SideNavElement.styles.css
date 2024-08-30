@@ -1,0 +1,28 @@
+.nav-element > .nav-element_mega-menu {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.nav-element:hover > .nav-element_mega-menu {
+  display: block;
+  opacity: 1;
+}
+
+.side-nav-element__category-icon-wrapper {
+  margin-right: 12px;
+}
+
+.side-nav-element__category-icon-wrapper > svg {
+  width: 18px;
+  height: 18px;
+}
+
+.side-nav-element__category-link {
+  display: flex !important;
+  flex-direction: row;
+  padding: 10px !important;
+}
+
+.side-nav-element__category-link:after {
+  content: "" !important;
+}

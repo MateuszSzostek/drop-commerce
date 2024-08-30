@@ -5,7 +5,8 @@ DEPLOY PIERWSZEGO PRODUKTU NA FRONCIE KLIENTA
 + dodac obsluge tagow produktow
 - wykluczyc z listy produktow providera produkty ktore sa w sklepie
 - dodac walidacje wymaganych kontrolek w formatce produktow
-- podlaczyc front klienta do produktow z backendu
++ podlaczyc front klienta do produktow z backendu
 
 DEVELOPMENT EXPIERENCE
 - naprawic przekierowania logowania/rejestracji
+- wyrzucic zbedne pliki z gita z store-client

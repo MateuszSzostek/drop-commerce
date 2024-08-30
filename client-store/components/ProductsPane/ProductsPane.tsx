@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import IProductsPane from "./ProductsPane.types";
@@ -12,7 +14,7 @@ export default function ProductsPane({
   extraSliderClass,
 }: IProductsPane) {
   return (
-    <div id="product-tabs-slider" className="scroll-tabs outer-top-vs">
+    <div className="scroll-tabs outer-top-vs">
       <div className="more-info-tab clearfix">
         {title && <h3 className="new-product-title pull-left">{title}</h3>}
         <ul className="nav nav-tabs nav-tab-line pull-right" id={id}>

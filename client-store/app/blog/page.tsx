@@ -1,3 +1,4 @@
+import Carousel from "@/components/Carousel/Carousel";
 import Layout from "../../components/Layout/Layout";
 import React from "react";
 
@@ -573,10 +574,7 @@ export default function Blog() {
           {/*<!-- ============================================== BRANDS CAROUSEL ============================================== -->*/}
           <div id="brands-carousel" className="logo-slider wow fadeInUp">
             <div className="logo-slider-inner">
-              <div
-                id="brand-slider"
-                className="owl-carousel brand-slider custom-carousel owl-theme"
-              >
+              <Carousel className=" brand-slider custom-carousel owl-theme">
                 <div className="item m-t-15">
                   <a href="#" className="image">
                     <img
@@ -686,7 +684,7 @@ export default function Blog() {
                   </a>
                 </div>
                 {/*<!--/.item-->*/}
-              </div>
+              </Carousel>
               {/*<!-- /.owl-carousel #logo-slider -->*/}
             </div>
             {/*<!-- /.logo-slider-inner -->*/}

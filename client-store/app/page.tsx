@@ -5,11 +5,17 @@ import Navigation from "../components/Navigation";
 import AdvertiseBanner from "../components/AdvertiseBanner";
 import ProductsPane from "../components/ProductsPane";
 import PromotionBanner from "../components/PromotionBanner";
-import { seasonCategories } from "../components/IndexPageContent/IndexPageContent.temp";
+import {
+  blogPane,
+  featuredProducts,
+  seasonCategories,
+} from "../components/IndexPageContent/IndexPageContent.temp";
 import Link from "next/link";
 import BlogPane from "../components/BlogPane";
 import Layout from "../components/Layout/Layout";
 import { GetStaticProps } from "next/types";
+import Carousel from "@/components/Carousel/Carousel";
+import BrandCarousel from "@/components/Carousels/Brand/BrandCarousel";
 
 export default async function Home({ params }) {
   const { categories, allProducts } = await getPost(1);
@@ -23,7 +29,7 @@ export default async function Home({ params }) {
   });
 
   return (
-    <Layout>
+    <Layout categories={categories}>
       <div className="body-content outer-top-vs" id="top-banner-and-menu">
         <div className="container content__container">
           <div className="row">
@@ -37,29 +43,7 @@ export default async function Home({ params }) {
             </div>
             <div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
               <div id="hero">
-                <div
-                  id="owl-main"
-                  className="owl-carousel owl-inner-nav owl-ui-sm"
-                >
-                  <AdvertiseBanner
-                    topTitle="Top Brands"
-                    title="New Collections"
-                    description="Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit."
-                    buttonText="Shop Now"
-                    buttonLink="/details-sigsidf"
-                    backgroundImage="url(assets/images/sliders/01.jpg)"
-                  />
-                  <AdvertiseBanner
-                    topTitle="Spring 2018"
-                    title="Women Fashion"
-                    description=" Nemo enim ipsam voluptatem quia voluptas sit
-                  aspernatur aut odit aut fugit"
-                    buttonText="Shop Now"
-                    buttonLink="/details-sigsidf"
-                    backgroundImage="url(assets/images/sliders/02.jpg)"
-                  />
-                </div>
+                <BrandCarousel />
               </div>
 
               {/*
@@ -100,16 +84,26 @@ export default async function Home({ params }) {
                         </li>
                       ))}
                     </ul>
+                    <h3 className="section-title season-cat-title">
+                      Season category
+                    </h3>
+                    <ul className="sub-cat">
+                      {seasonCategories.map((el) => (
+                        <li>
+                          <Link href={el?.to}>{el.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <div className="col-lg-9">
-                    {/*
-     <ProductsPane
-                    title="Awesome Category"
-                    id={featuredProducts.id}
-                    sliders={featuredProducts.sliders}
-                    extraSliderClass="season-category-owl-carousel"
-                  />
-                    */}
+                    {
+                      <ProductsPane
+                        title="Awesome Category"
+                        id={featuredProducts.id}
+                        sliders={featuredProducts.sliders}
+                        extraSliderClass="season-category-owl-carousel"
+                      />
+                    }
                   </div>
                 </div>
               </section>
@@ -126,23 +120,23 @@ export default async function Home({ params }) {
                   />
                 </div>
               </div>
-              {/*
-  <BlogPane
-              title={blogPane?.title}
-              id={blogPane?.id}
-              posts={blogPane?.posts}
-            />
-              */}
+              {
+                <BlogPane
+                  title={blogPane?.title}
+                  id={blogPane?.id}
+                  posts={blogPane?.posts}
+                />
+              }
 
               <section className="section new-arriavls">
-                {/*
-  <ProductsPane
-                title={featuredProducts.title}
-                id={featuredProducts.id}
-                sliders={featuredProducts.sliders}
-                extraSliderClass="home-owl-carousel"
-              />
-                */}
+                {
+                  <ProductsPane
+                    title={featuredProducts.title}
+                    id={featuredProducts.id}
+                    sliders={featuredProducts.sliders}
+                    extraSliderClass="home-owl-carousel"
+                  />
+                }
               </section>
             </div>
           </div>

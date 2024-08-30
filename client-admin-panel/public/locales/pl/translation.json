@@ -68,7 +68,7 @@
     "password": {
       "uppercase-letter": "Haslo powinno zawierac przynajmiej jedną dużą literę",
       "must-contain-at-least-one-special-character": "Password must have at least one special scharacter",
-      "must-be-at-least-4-characters-longand-at-most-20": "Password must be between 4 and 20 characters"
+      "must-be-at-least-4-characters-long-and-at-most-20": "Password must be between 4 and 20 characters"
     }
   },
   "reset-password-sent-confirmation-modalss": {

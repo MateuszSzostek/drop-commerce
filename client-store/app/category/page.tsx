@@ -1,6 +1,8 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import SideNav from "../../components/SideNav/SideNav";
+import Carousel from "@/components/Carousel/Carousel";
+import translations from "@/translations/translations.pl";
 
 export default function Category() {
   return (
@@ -783,7 +785,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -875,7 +877,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -967,7 +969,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1059,7 +1061,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1150,7 +1152,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1242,7 +1244,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1334,7 +1336,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1426,7 +1428,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1519,7 +1521,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1611,7 +1613,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1703,7 +1705,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1795,7 +1797,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1886,7 +1888,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -1977,7 +1979,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -2068,7 +2070,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -2159,7 +2161,7 @@ export default function Category() {
                                           className="btn btn-primary cart-btn"
                                           type="button"
                                         >
-                                          Add to cart
+                                          {translations.basket["add-to-basket"]}
                                         </button>
                                       </li>
                                       <li className="lnk wishlist">
@@ -2260,7 +2262,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2361,7 +2367,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2462,7 +2472,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2563,7 +2577,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2664,7 +2682,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2765,7 +2787,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2866,7 +2892,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2967,7 +2997,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -3068,7 +3102,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -3169,7 +3207,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -3270,7 +3312,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -3371,7 +3417,11 @@ export default function Category() {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -3461,10 +3511,7 @@ export default function Category() {
           {/*<!-- ============================================== BRANDS CAROUSEL ============================================== -->*/}
           <div id="brands-carousel" className="logo-slider">
             <div className="logo-slider-inner">
-              <div
-                id="brand-slider"
-                className="owl-carousel brand-slider custom-carousel owl-theme"
-              >
+              <Carousel className="owl-carousel brand-slider custom-carousel owl-theme">
                 <div className="item m-t-15">
                   <a href="#" className="image">
                     <img
@@ -3574,7 +3621,7 @@ export default function Category() {
                   </a>
                 </div>
                 {/*<!--/.item-->*/}
-              </div>
+              </Carousel>
               {/*<!-- /.owl-carousel #logo-slider -->*/}
             </div>
             {/*<!-- /.logo-slider-inner -->*/}

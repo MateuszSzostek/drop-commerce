@@ -71,7 +71,7 @@ export default function useProduct() {
   useEffect(() => {
     if (!isLoadingTags && tags) {
       const newTagsList: SelectOptions = tags?.data?.map((tag) => ({
-        value: tag?.id,
+        value: tag?.name,
         label: tag?.name,
       }));
 

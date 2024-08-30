@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Password } from "../services/password";
 
-type Role = "ADMIN" | "TEACHER" | "PARENT";
+type Role = "ADMIN" | "CUSTOMER" | "SUPER_ADMIN";
 
 // An interface that describes the properties
 // that are requried to create a new User
@@ -13,8 +13,6 @@ interface UserAttrs {
   phoneNumber: string;
   privacyPolicy: boolean;
   roles: Role[];
-  parentOf?: string[];
-  kindergardens?: string[];
 }
 
 // An interface that describes the properties
@@ -33,8 +31,6 @@ export interface UserDoc extends mongoose.Document {
   phoneNumber: string;
   privacyPolicy: boolean;
   roles: Role[];
-  parentOf: string[];
-  kindergardens: string[];
 }
 
 const userSchema = new mongoose.Schema(
@@ -66,14 +62,6 @@ const userSchema = new mongoose.Schema(
     roles: {
       type: Array<String>,
       required: true,
-    },
-    parentOf: {
-      type: Array<String>,
-      required: false,
-    },
-    kindergardens: {
-      type: Array<String>,
-      required: false,
     },
   },
   {

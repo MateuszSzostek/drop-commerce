@@ -1,16 +1,24 @@
-import React from "react";
+"use client";
+
 import { PropsWithChildren } from "react";
 import HotDealCard from "../HotDealCard";
 import ProductCardTiny from "../ProductCardTiny";
 import { productTags } from "./Navigation.temp";
 import Link from "next/link";
+import Carousel from "../Carousel/Carousel";
+import translations from "@/translations/translations.pl";
 
 export default function Navigation({ children }: PropsWithChildren<{}>) {
   return (
     <>
       <div className="sidebar-widget hot-deals outer-bottom-xs">
-        <h3 className="section-title">Hot deals</h3>
-        <div className="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
+        <h3 className="section-title">
+          {translations.navigation["occasions"]}
+        </h3>
+        {
+          //<div className="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
+        }
+        <Carousel className="sidebar-carousel custom-carousel owl-theme outer-top-ss">
           <HotDealCard
             name="Floral Print Buttoned"
             price={60}
@@ -38,13 +46,17 @@ export default function Navigation({ children }: PropsWithChildren<{}>) {
             image={"/assets/images/hot-deals/p15.jpg"}
             imageHover={"/assets/images/hot-deals/p15_hover.jpg"}
           />
-        </div>
+        </Carousel>
       </div>
-
+      {
+        // </div>
+      }
       <div className="sidebar-widget outer-bottom-small">
-        <h3 className="section-title">Special Offer</h3>
+        <h3 className="section-title">
+          {translations.navigation["special-offers"]}
+        </h3>
         <div className="sidebar-widget-body outer-top-xs">
-          <div className="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
+          <Carousel className="sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
             <div className="item">
               <div className="products special-product">
                 <ProductCardTiny
@@ -111,7 +123,7 @@ export default function Navigation({ children }: PropsWithChildren<{}>) {
                 />
               </div>
             </div>
-          </div>
+          </Carousel>
         </div>
       </div>
       <div className="sidebar-widget product-tag">
@@ -129,7 +141,7 @@ export default function Navigation({ children }: PropsWithChildren<{}>) {
       <div className="sidebar-widget outer-bottom-small">
         <h3 className="section-title">Special Deals</h3>
         <div className="sidebar-widget-body outer-top-xs">
-          <div className="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
+          <Carousel className="sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
             <div className="item">
               <div className="products special-product">
                 <ProductCardTiny
@@ -196,7 +208,7 @@ export default function Navigation({ children }: PropsWithChildren<{}>) {
                 />
               </div>
             </div>
-          </div>
+          </Carousel>
         </div>
       </div>
       <div className="sidebar-widget newsletter outer-bottom-small">

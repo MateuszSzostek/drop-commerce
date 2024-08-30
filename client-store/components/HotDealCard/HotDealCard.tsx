@@ -2,6 +2,7 @@ import React from "react";
 import IHotDealCard from "./HotDealCard.types";
 import DealTimer from "../DealTimer/DealTimer";
 import Link from "next/link";
+import translations from "@/translations/translations.pl";
 
 export default function HotDealCard({
   discountPrecentages,
@@ -54,7 +55,7 @@ export default function HotDealCard({
                 <i className="fa fa-shopping-cart"></i>
               </button>
               <button className="btn btn-primary cart-btn" type="button">
-                Add to cart
+                {translations.basket["add-to-basket"]}
               </button>
             </div>
           </div>

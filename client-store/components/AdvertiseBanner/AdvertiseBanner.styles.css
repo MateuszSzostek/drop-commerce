@@ -1,0 +1,22 @@
+.advertise-banner_text-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 500px;
+}
+
+.advertise-banner__title {
+  font-size: 56px;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.advertise-banner__subtitle {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.advertise-banner__text {
+  font-size: 18px;
+  margin-bottom: 12px;
+}

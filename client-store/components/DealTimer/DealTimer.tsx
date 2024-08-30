@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import IDealTimer from "./DealTimer.types";
+import translations from "@/translations/translations.pl";
 
 export default function DealTimer({ timeInSeconds }: IDealTimer) {
   const [timeLeft, setTimeLeft] = useState(timeInSeconds);
@@ -54,25 +55,25 @@ export default function DealTimer({ timeInSeconds }: IDealTimer) {
       <div className="box-wrapper">
         <div className="date box">
           <span className="key">{time?.days}</span>
-          <span className="value">DAYS</span>
+          <span className="value">{translations.HotDealCard["days"]}</span>
         </div>
       </div>
       <div className="box-wrapper">
         <div className="hour box">
           <span className="key">{time?.hours}</span>
-          <span className="value">HRS</span>
+          <span className="value">{translations.HotDealCard["hrs"]}</span>
         </div>
       </div>
       <div className="box-wrapper">
         <div className="minutes box">
           <span className="key">{time?.minutes}</span>
-          <span className="value">MINS</span>
+          <span className="value">{translations.HotDealCard["mins"]}</span>
         </div>
       </div>
       <div className="box-wrapper">
         <div className="seconds box">
           <span className="key">{time?.seconds}</span>
-          <span className="value">SEC</span>
+          <span className="value">{translations.HotDealCard["secs"]}</span>
         </div>
       </div>
     </div>

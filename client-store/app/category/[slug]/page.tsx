@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../../../components/Layout/Layout";
 import SideNav from "../../../components/SideNav/SideNav";
 import ProductSearchCard from "../../../components/ProductSearchCard/ProductSearchCard";
+import Carousel from "@/components/Carousel/Carousel";
+import translations from "@/translations/translations.pl";
 
 export default async function Category(props) {
   const products = await getProductsByCategory(props?.params?.slug);
@@ -815,7 +817,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -916,7 +922,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1017,7 +1027,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1118,7 +1132,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1219,7 +1237,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1320,7 +1342,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1421,7 +1447,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1522,7 +1552,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1623,7 +1657,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1724,7 +1762,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1825,7 +1867,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -1926,7 +1972,11 @@ export default async function Category(props) {
                                             className="btn btn-primary cart-btn"
                                             type="button"
                                           >
-                                            Add to cart
+                                            {
+                                              translations.basket[
+                                                "add-to-basket"
+                                              ]
+                                            }
                                           </button>
                                         </li>
                                         <li className="lnk wishlist">
@@ -2016,10 +2066,7 @@ export default async function Category(props) {
           {/*<!-- ============================================== BRANDS CAROUSEL ============================================== -->*/}
           <div id="brands-carousel" className="logo-slider">
             <div className="logo-slider-inner">
-              <div
-                id="brand-slider"
-                className="owl-carousel brand-slider custom-carousel owl-theme"
-              >
+              <Carousel className="brand-slider custom-carousel owl-theme">
                 <div className="item m-t-15">
                   <a href="#" className="image">
                     <img
@@ -2129,7 +2176,7 @@ export default async function Category(props) {
                   </a>
                 </div>
                 {/*<!--/.item-->*/}
-              </div>
+              </Carousel>
               {/*<!-- /.owl-carousel #logo-slider -->*/}
             </div>
             {/*<!-- /.logo-slider-inner -->*/}

@@ -5,20 +5,22 @@ interface OrderAttrs {
   ownerName: string;
   ownerSurname: string;
   statusTags: string[];
-  basket: {
-    providerId: string;
-    products: {
-      id: string;
-      name: string;
-      amount: number;
-      shortDescription: string;
-      price: string;
-      totalNettoPrice: string;
-      totalBruttoPrice: string;
-      thubnail: string;
-    }[];
-  }[];
+  basket: OrderBasket;
 }
+
+export type OrderBasket = {
+  providerId: string;
+  products: {
+    id: string;
+    name: string;
+    amount: number;
+    shortDescription: string;
+    price: string;
+    totalNettoPrice: string;
+    totalBruttoPrice: string;
+    thubnail: string;
+  }[];
+}[];
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
   build(attrs: OrderAttrs): OrderDoc;
@@ -29,19 +31,7 @@ export interface OrderDoc extends mongoose.Document {
   ownerName: string;
   ownerSurname: string;
   statusTags: string[];
-  basket: {
-    providerId: string;
-    products: {
-      id: string;
-      name: string;
-      amount: number;
-      shortDescription: string;
-      price: string;
-      totalNettoPrice: string;
-      totalBruttoPrice: string;
-      thubnail: string;
-    }[];
-  }[];
+  basket: OrderBasket;
 }
 
 const orderSchema = new mongoose.Schema(

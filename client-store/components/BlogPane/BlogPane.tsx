@@ -4,6 +4,7 @@ import IProductsPane from "./BlogPane.types";
 import PaneSlider from "./PaneSlider";
 import ProductCard from "../ProductCard";
 import BlogPostCard from "../BlogPostCard/BlogPostCard";
+import Carousel from "../Carousel/Carousel";
 
 export default function BlogPane({
   title,
@@ -15,7 +16,7 @@ export default function BlogPane({
     <section className="section latest-blog outer-bottom-vs">
       <h3 className="section-title">{title}</h3>
       <div className="blog-slider-container outer-top-xs">
-        <div className="owl-carousel blog-slider custom-carousel">
+        <Carousel className=" blog-slider custom-carousel">
           {posts?.map((el) => (
             <BlogPostCard
               title={el?.title}
@@ -26,7 +27,7 @@ export default function BlogPane({
               to={el?.to}
             />
           ))}
-        </div>
+        </Carousel>
       </div>
     </section>
   );

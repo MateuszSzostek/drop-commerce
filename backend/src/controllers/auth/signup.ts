@@ -17,7 +17,7 @@ router.post(
     body("password")
       .trim()
       .isLength({ min: 4, max: 20 })
-      .withMessage("must-be-at-least-4-characters-longand-at-most-20")
+      .withMessage("must-be-at-least-4-characters-long-and-at-most-20")
       .matches(/^(?=.*[!@#$%^&*])/)
       .withMessage("must-contain-at-least-one-special-character"),
     body("privacyPolicy").equals("true"),
@@ -45,7 +45,7 @@ router.post(
       surname,
       phoneNumber,
       privacyPolicy,
-      roles: ["PARENT"],
+      roles: ["ADMIN"],
     });
     await user.save();
 

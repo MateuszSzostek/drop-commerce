@@ -22,12 +22,15 @@ export default function ProductCardTiny({
             </div>
           </div>
           <div className="col col-xs-7">
-            <div className="product-info">
-              <h3 className="name">
+            <div className="product-info" style={{ position: "relative" }}>
+              <h3 className="name" style={{ position: "relative" }}>
                 <Link href={to}>{title}</Link>
               </h3>
-              <div className="rating rateit-small"></div>
-              <div className="product-price">
+              <div
+                className="rating rateit-small"
+                style={{ position: "relative" }}
+              ></div>
+              <div className="product-price" style={{ position: "relative" }}>
                 <span className="price"> {price}zl </span>
               </div>
             </div>

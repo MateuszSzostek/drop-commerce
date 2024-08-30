@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import Navigation from "../../components/Navigation";
+import Carousel from "@/components/Carousel/Carousel";
 
 export default function Details() {
   return (
@@ -493,7 +494,7 @@ export default function Details() {
                           <div className="add-btn">
                             <a href="#" className="btn btn-primary">
                               <i className="fa fa-shopping-cart inner-right-vs"></i>{" "}
-                              ADD TO CART
+                              {translations.basket["add-to-basket"]}
                             </a>
                           </div>
                         </div>
@@ -879,7 +880,7 @@ export default function Details() {
                     </div>
                   </div>
                   <div className="col-lg-9">
-                    <div className="owl-carousel homepage-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
+                    <Carousel className="homepage-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
                       <div className="item item-carousel">
                         <div className="products">
                           <div className="product">
@@ -931,7 +932,7 @@ export default function Details() {
                                       className="btn btn-primary cart-btn"
                                       type="button"
                                     >
-                                      Add to cart
+                                      {translations.basket["add-to-basket"]}
                                     </button>
                                   </li>
 
@@ -1017,7 +1018,7 @@ export default function Details() {
                                       className="btn btn-primary cart-btn"
                                       type="button"
                                     >
-                                      Add to cart
+                                      {translations.basket["add-to-basket"]}
                                     </button>
                                   </li>
 
@@ -1103,7 +1104,7 @@ export default function Details() {
                                       className="btn btn-primary cart-btn"
                                       type="button"
                                     >
-                                      Add to cart
+                                      {translations.basket["add-to-basket"]}
                                     </button>
                                   </li>
 
@@ -1189,7 +1190,7 @@ export default function Details() {
                                       className="btn btn-primary cart-btn"
                                       type="button"
                                     >
-                                      Add to cart
+                                      {translations.basket["add-to-basket"]}
                                     </button>
                                   </li>
 
@@ -1276,7 +1277,7 @@ export default function Details() {
                                       className="btn btn-primary cart-btn"
                                       type="button"
                                     >
-                                      Add to cart
+                                      {translations.basket["add-to-basket"]}
                                     </button>
                                   </li>
 
@@ -1363,7 +1364,7 @@ export default function Details() {
                                       className="btn btn-primary cart-btn"
                                       type="button"
                                     >
-                                      Add to cart
+                                      {translations.basket["add-to-basket"]}
                                     </button>
                                   </li>
 
@@ -1397,7 +1398,7 @@ export default function Details() {
                         {/* <!-- /.products --> */}
                       </div>
                       {/* <!-- /.item --> */}
-                    </div>
+                    </Carousel>
                     {/* <!-- /.home-owl-carousel --> */}
                   </div>
                 </div>
@@ -1412,10 +1413,7 @@ export default function Details() {
             {/* <!-- ============================================== BRANDS CAROUSEL ============================================== --> */}
             <div id="brands-carousel" className="logo-slider">
               <div className="logo-slider-inner">
-                <div
-                  id="brand-slider"
-                  className="owl-carousel brand-slider custom-carousel owl-theme"
-                >
+                <Carousel className="brand-slider custom-carousel owl-theme">
                   <div className="item m-t-15">
                     <a href="#" className="image">
                       <img
@@ -1525,7 +1523,7 @@ export default function Details() {
                     </a>
                   </div>
                   {/* <!--/.item--> */}
-                </div>
+                </Carousel>
                 {/* <!-- /.owl-carousel #logo-slider --> */}
               </div>
               {/* <!-- /.logo-slider-inner --> */}

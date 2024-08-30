@@ -68,7 +68,7 @@ export default function ProductCard({
                       <i className="fa fa-shopping-cart"></i>
                     </button>
                     <button className="btn btn-primary cart-btn" type="button">
-                      Add to cart
+                      {translations.basket["add-to-basket"]}
                     </button>
                   </li>
                   <li className="lnk wishlist">

@@ -1,5 +1,9 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
+import Carousel from "@/components/Carousel/Carousel";
+import translations from "@/translations/translations.pl";
+import LoginForm from "@/components/LoginForm/LoginForm";
+import RegisterForm from "@/components/RegisterForm/RegisterForm";
 
 export default function SignIn() {
   return (
@@ -25,128 +29,11 @@ export default function SignIn() {
           <div className="sign-in-page">
             <div className="row">
               {/*<!-- Sign-in -->*/}
-              <div className="col-md-6 col-sm-6 sign-in">
-                <h4 className="">Sign in</h4>
-                <p className="">Hello, Welcome to your account.</p>
-                <div className="social-sign-in outer-top-xs">
-                  <a href="#" className="facebook-sign-in">
-                    <i className="fa fa-facebook"></i> Sign In with Facebook
-                  </a>
-                  <a href="#" className="twitter-sign-in">
-                    <i className="fa fa-twitter"></i> Sign In with Twitter
-                  </a>
-                </div>
-                <form className="register-form outer-top-xs" role="form">
-                  <div className="form-group">
-                    <label className="info-title" htmlFor="exampleInputEmail1">
-                      Email Address <span>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputEmail1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label
-                      className="info-title"
-                      htmlFor="exampleInputPassword1"
-                    >
-                      Password <span>*</span>
-                    </label>
-                    <input
-                      type="password"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputPassword1"
-                    />
-                  </div>
-                  <div className="radio outer-xs">
-                    <label>
-                      <input
-                        type="radio"
-                        name="optionsRadios"
-                        id="optionsRadios2"
-                        value="option2"
-                      />
-                      Remember me!
-                    </label>
-                    <a href="#" className="forgot-password pull-right">
-                      Forgot your Password?
-                    </a>
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn-upper btn btn-primary checkout-page-button"
-                  >
-                    Login
-                  </button>
-                </form>
-              </div>
+              <LoginForm />
               {/*<!-- Sign-in -->*/}
               {/*<!-- create a new account -->*/}
-              <div className="col-md-6 col-sm-6 create-new-account">
-                <h4 className="checkout-subtitle">Create a new account</h4>
-                <p className="text title-tag-line">Create your new account.</p>
-                <form className="register-form outer-top-xs" role="form">
-                  <div className="form-group">
-                    <label className="info-title" htmlFor="exampleInputEmail2">
-                      Email Address <span>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputEmail2"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="info-title" htmlFor="exampleInputEmail1">
-                      Name <span>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputEmail1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="info-title" htmlFor="exampleInputEmail1">
-                      Phone Number <span>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputEmail1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="info-title" htmlFor="exampleInputEmail1">
-                      Password <span>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputEmail1"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="info-title" htmlFor="exampleInputEmail1">
-                      Confirm Password <span>*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control unicase-form-control text-input"
-                      id="exampleInputEmail1"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn-upper btn btn-primary checkout-page-button"
-                  >
-                    Sign Up
-                  </button>
-                </form>
-              </div>
-              {/*<!-- create a new account -->*/}{" "}
+              <RegisterForm />
+              {/*<!-- create a new account -->*/}
             </div>
             {/*<!-- /.row -->*/}
           </div>
@@ -154,10 +41,7 @@ export default function SignIn() {
           {/*<!-- ============================================== BRANDS CAROUSEL ============================================== -->*/}
           <div id="brands-carousel" className="logo-slider wow fadeInUp">
             <div className="logo-slider-inner">
-              <div
-                id="brand-slider"
-                className="owl-carousel brand-slider custom-carousel owl-theme"
-              >
+              <Carousel className="brand-slider custom-carousel owl-theme">
                 <div className="item m-t-15">
                   <a href="#" className="image">
                     <img
@@ -267,7 +151,7 @@ export default function SignIn() {
                   </a>
                 </div>
                 {/*<!--/.item-->*/}
-              </div>
+              </Carousel>
               {/*<!-- /.owl-carousel #logo-slider -->*/}
             </div>
             {/*<!-- /.logo-slider-inner -->*/}

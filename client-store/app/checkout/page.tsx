@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
+import Carousel from "@/components/Carousel/Carousel";
 
 export default function Checkout() {
   return (
@@ -383,10 +384,7 @@ export default function Checkout() {
           {/*<!-- ============================================== BRANDS CAROUSEL ============================================== -->*/}
           <div id="brands-carousel" className="logo-slider wow fadeInUp">
             <div className="logo-slider-inner">
-              <div
-                id="brand-slider"
-                className="owl-carousel brand-slider custom-carousel owl-theme"
-              >
+              <Carousel className="brand-slider custom-carousel owl-theme">
                 <div className="item m-t-15">
                   <a href="#" className="image">
                     <img
@@ -496,7 +494,7 @@ export default function Checkout() {
                   </a>
                 </div>
                 {/*<!--/.item-->*/}
-              </div>
+              </Carousel>
               {/*<!-- /.owl-carousel #logo-slider -->*/}
             </div>
             {/*<!-- /.logo-slider-inner -->*/}

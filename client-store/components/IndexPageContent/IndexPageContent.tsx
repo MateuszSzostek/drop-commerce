@@ -12,6 +12,7 @@ import {
   blogPane,
   seasonCategories,
 } from "./IndexPageContent.temp";
+import SeasonalModule from "../SeasonalModule/SeasonalModule";
 
 export default function IndexPageConent() {
   return (
@@ -30,10 +31,9 @@ export default function IndexPageConent() {
                 className="owl-carousel owl-inner-nav owl-ui-sm"
               >
                 <AdvertiseBanner
-                  topTitle="Top Brands"
-                  title="New Collections"
-                  description="Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit."
+                  topTitle="Przygotuj Ogród na Wiosnę!"
+                  title="Wiosenne Promocje na Artykuły Ogrodowe!"
+                  description="Zacznij sezon ogrodowy z nową energią! Skorzystaj z promocji na narzędzia, nasiona i dekoracje. Wszystko, czego potrzebujesz, by twój ogród rozkwitł, znajdziesz w obniżonych cenach. Sprawdź ofertę i przygotuj się na wiosnę!"
                   buttonText="Shop Now"
                   buttonLink="/details-sigsidf"
                   backgroundImage="url(assets/images/sliders/01.jpg)"
@@ -88,12 +88,7 @@ export default function IndexPageConent() {
                   </ul>
                 </div>
                 <div className="col-lg-9">
-                  <ProductsPane
-                    title="Awesome Category"
-                    id={featuredProducts.id}
-                    sliders={featuredProducts.sliders}
-                    extraSliderClass="season-category-owl-carousel"
-                  />
+                  <SeasonalModule />
                 </div>
               </div>
             </section>

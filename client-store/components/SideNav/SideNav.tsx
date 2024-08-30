@@ -1,19 +1,20 @@
+"use client";
+
 import React from "react";
 import ISideNav from "./SideNav.types";
 import SideNavElement from "./SIdeNavElement/SideNavElement";
+import translations from "@/translations/translations.pl";
 
 export default function SideNav({ categoriesTreeObj }: ISideNav) {
   //console.warn("categoriesObj: ", categoriesTreeObj);
 
-  console.warn(
-    "NODES: ",
-    categoriesTreeObj?.nodes[0]?.nodes.map((el) => console.log("nodeeeee:", el))
-  );
+  console.warn(categoriesTreeObj);
 
   return (
     <div className="side-menu animate-dropdown outer-bottom-xs">
       <div className="head">
-        <i className="icon fa fa-align-justify fa-fw"></i> Categories
+        <i className="icon fa fa-align-justify fa-fw"></i>{" "}
+        {translations.categories["categories"]}
       </div>
       <nav className="yamm megamenu-horizontal">
         <ul className="nav">
@@ -23,6 +24,7 @@ export default function SideNav({ categoriesTreeObj }: ISideNav) {
               links={el?.nodes?.map((el) => ({
                 name: el?.name,
                 slug: el?.name,
+                nodes: el?.nodes,
               }))}
             />
           ))}

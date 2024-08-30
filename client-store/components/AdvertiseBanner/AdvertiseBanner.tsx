@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import IAdvertiseBanner from "./AdvertiseBanner.types";
+import "./AdvertiseBanner.styles.css";
 
 export default function AdvertiseBanner({
   topTitle,
@@ -15,14 +16,18 @@ export default function AdvertiseBanner({
       className="item"
       style={{
         backgroundImage: backgroundImage,
+        height: "500px",
       }}
     >
       <div className="container-fluid">
-        <div className="caption bg-color vertical-center text-left">
-          <div className="slider-header fadeInDown-1">{topTitle}</div>
-          <div className="big-text fadeInDown-1">{title}</div>
-          <div className="excerpt fadeInDown-2 hidden-xs">
-            <span>{description}</span>
+        <div className="advertise-banner_text-container caption bg-color vertical-center text-left">
+          <div className="advertise-banner__title">{topTitle}</div>
+          <div className="advertise-banner__subtitle">{title}</div>
+          <div
+            className="advertise-banner__text excerpt fadeInDown-2 hidden-xs"
+            style={{ maxWidth: "60%" }}
+          >
+            <span className="">{description}</span>
           </div>
           <div className="button-holder fadeInDown-3">
             <Link

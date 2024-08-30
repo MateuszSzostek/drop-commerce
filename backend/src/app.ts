@@ -10,6 +10,10 @@ import { signinRouter } from "./controllers/auth/signin";
 import { signoutRouter } from "./controllers/auth/signout";
 import { signupRouter } from "./controllers/auth/signup";
 
+import { customerSigninRouter } from "./controllers/auth/customer-signin";
+import { customerSignoutRouter } from "./controllers/auth/customer-signout";
+import { customerSignupRouter } from "./controllers/auth/customer-signup";
+
 import { addProductRouter } from "./controllers/product/add";
 import { applyPendingChangesRouter } from "./controllers/product/apply-pending-changes";
 import { checkForUpdatesRouter } from "./controllers/product/check-for-update";
@@ -68,6 +72,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:3002",
+      "http://localhost:3000",
       "http://backend:3002",
     ],
     credentials: true,
@@ -78,6 +83,10 @@ app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
+
+app.use(customerSigninRouter);
+app.use(customerSignoutRouter);
+app.use(customerSignupRouter);
 
 app.use(addProductRouter);
 app.use(applyPendingChangesRouter);
