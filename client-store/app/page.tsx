@@ -24,9 +24,17 @@ export default async function Home({ params }) {
   // ?.filter((product) => prodyc)
   // .map((product) => ({}));
 
-  const specialOffersProducts = allProducts?.data?.items?.forEach((product) => {
-    console.warn(product?.tags);
+  //console.log(allProducts);
+
+  const hotDealsProducts = allProducts?.data?.items?.filter((product) =>
+    product?.tags?.includes("hot")
+  );
+
+  hotDealsProducts?.forEach((product) => {
+    console.log(product);
   });
+
+  hotDealsProducts.length = 3;
 
   return (
     <Layout categories={categories}>
@@ -39,7 +47,7 @@ export default async function Home({ params }) {
                   categories?.data?.categoriesTreeObj
                 )}
               />
-              <Navigation></Navigation>
+              <Navigation hotDealsProducts={hotDealsProducts}></Navigation>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
               <div id="hero">
@@ -183,7 +191,7 @@ async function getPost(id: number) {
 
   const allProducts = await allProductsResponse.json();
 
-  console.warn(allProducts?.data?.items);
+  //console.warn(allProducts?.data?.items);
 
   if (!categories) {
     return null;

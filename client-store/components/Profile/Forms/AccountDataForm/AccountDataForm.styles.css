@@ -1,0 +1,10 @@
+.acc-data-form__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.acc-data-form__col {
+  display: flex;
+  flex-direction: column;
+  margin-right: 24px;
+}

@@ -19,8 +19,6 @@ export default function useRegisterForm() {
 
   const handleSubmitCustomerRegister = async (e) => {
     e.preventDefault();
-
-    e.preventDefault();
     const formData = new FormData(e.target);
     console.log(Object.fromEntries(formData));
 
@@ -33,10 +31,10 @@ export default function useRegisterForm() {
       surname: formData.get("surname") as string,
     });
 
-    console.warn(customerRegisterResult);
+    //console.warn(customerRegisterResult);
 
     if ("data" in customerRegisterResult) {
-      console.warn(customerRegisterResult?.data?.data?.name);
+      // console.warn(customerRegisterResult?.data?.data?.name);
       dispatch(
         setUserData({
           name: customerRegisterResult?.data?.data?.name as string,
@@ -57,10 +55,6 @@ export default function useRegisterForm() {
     console.warn(formErrors);
     setFormErrors(formErrors);
   };
-
-  useEffect(() => {
-    console.warn(formErrors);
-  }, [formErrors]);
 
   return { handleSubmitCustomerRegister, formErrors };
 }

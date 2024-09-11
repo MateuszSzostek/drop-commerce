@@ -104,6 +104,12 @@ const translations: ITranslations = {
     "forgot-password-link": "Zapomniales hasla?",
     "privacy-policy": "Polityka prywatnosci",
   },
+  notifications: {
+    "add-product-title": " Dodano nowy produkt do koszyka!",
+    "remove-product-title": "Usunieto produkt z koszyka!",
+    "add-product-body": " - dodano do koszyka!",
+    "remove-product-body": " - usunieto z koszyka!",
+  },
   "error-code": {
     password: {
       "must-be-at-least-4-characters-long-and-at-most-20":
@@ -113,6 +119,10 @@ const translations: ITranslations = {
     },
     privacyPolicy: {
       "must-be-accepted": "Aby zalozyc konta nalezy zaakceptowac warunki umowy",
+    },
+    email: {
+      "in-use":
+        "Wyglada na to ze posiadamy w systemie konto zarejestrowane na podany przez Ciebie adres email.",
     },
   },
 };

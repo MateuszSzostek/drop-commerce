@@ -8,7 +8,7 @@ import translations from "@/translations/translations.pl";
 export default function SideNav({ categoriesTreeObj }: ISideNav) {
   //console.warn("categoriesObj: ", categoriesTreeObj);
 
-  console.warn(categoriesTreeObj);
+  // console.warn(categoriesTreeObj);
 
   return (
     <div className="side-menu animate-dropdown outer-bottom-xs">

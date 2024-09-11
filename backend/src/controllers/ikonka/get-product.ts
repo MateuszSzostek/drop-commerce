@@ -13,7 +13,7 @@ router.get(
     const { id } = req.params;
 
     const ikonkaProduct = await IkonkaProduct.findOne({ _id: id });
-    console.log("HERE");
+    // console.log("HERE");
 
     if (!ikonkaProduct) {
       throw new NotFoundError();

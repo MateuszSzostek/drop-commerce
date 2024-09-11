@@ -263,55 +263,6 @@
   margin-bottom: 12px;
 }
 
-/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./components/Notifications/notifications.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************/
-.notifications__container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.notification {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  padding: 6px 12px;
-  margin: 4px;
-  border: 1px green solid;
-}
-
-.notification__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.notification__icon {
-  max-width: 32px;
-  max-height: 32px;
-  margin-top: 6px;
-  margin-right: 6px;
-}
-
-.notification__icon > svg {
-  max-width: 32px;
-  max-height: 32px;
-}
-
-.notification__title {
-  font-size: 18px;
-  padding-bottom: 4px;
-}
-
-.notification__body {
-}
-
 /*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./components/Layout/Layout.styles.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************/

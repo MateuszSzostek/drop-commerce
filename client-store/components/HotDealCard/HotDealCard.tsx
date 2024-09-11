@@ -3,8 +3,10 @@ import IHotDealCard from "./HotDealCard.types";
 import DealTimer from "../DealTimer/DealTimer";
 import Link from "next/link";
 import translations from "@/translations/translations.pl";
+import useBasket from "@/hooks/useBasket";
 
 export default function HotDealCard({
+  id,
   discountPrecentages,
   name,
   price,
@@ -14,6 +16,10 @@ export default function HotDealCard({
   image,
   imageHover,
 }: IHotDealCard) {
+  const { handleAddToBasket, addToBasketResult } = useBasket();
+
+  console.warn(id);
+
   return (
     <div className="item">
       <div className="products">
@@ -54,7 +60,11 @@ export default function HotDealCard({
               >
                 <i className="fa fa-shopping-cart"></i>
               </button>
-              <button className="btn btn-primary cart-btn" type="button">
+              <button
+                className="btn btn-primary cart-btn"
+                type="button"
+                onClick={() => handleAddToBasket(id, name)}
+              >
                 {translations.basket["add-to-basket"]}
               </button>
             </div>

@@ -58,4 +58,4 @@ router.post(
   }
 );
 
-export { router as addItemToBasketRouter };
+export { router as removeItemFromBasketRouter };

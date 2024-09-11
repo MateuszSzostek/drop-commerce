@@ -10,7 +10,16 @@ interface UserAttrs {
   password: string;
   name: string;
   surname: string;
-  phoneNumber: string;
+  userName?: string;
+  phone?: string;
+  place?: string;
+  streetName?: string;
+  streetNumber?: string;
+  post?: string;
+
+  postCode?: string;
+  voivodeship?: string;
+  commune?: string;
   privacyPolicy: boolean;
   roles: Role[];
 }
@@ -25,10 +34,19 @@ interface UserModel extends mongoose.Model<UserDoc> {
 // that a User Document has
 export interface UserDoc extends mongoose.Document {
   email: string;
-  password: string;
+  password?: string;
   name: string;
   surname: string;
-  phoneNumber: string;
+  userName: string;
+  phone: string;
+  place: string;
+  streetName: string;
+  streetNumber: string;
+  post: string;
+
+  postCode: string;
+  voivodeship?: string;
+  commune?: string;
   privacyPolicy: boolean;
   roles: Role[];
 }
@@ -51,10 +69,44 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    phoneNumber: {
+    userName: {
       type: String,
       required: false,
     },
+    phone: {
+      type: String,
+      required: false,
+    },
+    place: {
+      type: String,
+      required: false,
+    },
+    streetName: {
+      type: String,
+      required: false,
+    },
+    streetNumber: {
+      type: String,
+      required: false,
+    },
+    post: {
+      type: String,
+      required: false,
+    },
+
+    postCode: {
+      type: String,
+      required: false,
+    },
+    voivodeship: {
+      type: String,
+      required: false,
+    },
+    commune: {
+      type: String,
+      required: false,
+    },
+
     privacyPolicy: {
       type: Boolean,
       required: true,

@@ -6,11 +6,11 @@ import "./SideNavElement.styles.css";
 import translations from "@/translations/translations.pl";
 
 export default function SideNavElement({ name, links }: ISideNavElement) {
-  console.warn(links);
+  // console.warn(links);
 
   const { fragmentedLinks, navElementsTable } = useSideNavElement(links);
 
-  console.warn(fragmentedLinks);
+  //console.warn(fragmentedLinks);
 
   return (
     <li className="nav-element">

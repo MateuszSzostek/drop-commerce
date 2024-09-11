@@ -16,7 +16,7 @@ export default function useNotifications() {
   );
 
   useEffect(() => {
-    console.warn(notifications);
+    // console.warn(notifications);
   }, [notifications]);
 
   const dispatch = useDispatch();
@@ -24,19 +24,21 @@ export default function useNotifications() {
   const showNotification = ({
     title,
     body,
+    type,
   }: {
     title: string;
     body: string;
+    type: "success" | "warning" | "error";
   }) => {
-    console.log("show notification");
+    //console.log("show notification");
 
     const notificationId = generateRandomString(10);
 
-    dispatch(addNotification({ id: notificationId, title, body }));
-    console.log("after dispatch");
+    dispatch(addNotification({ id: notificationId, title, body, type }));
+    // console.log("after dispatch");
     setTimeout(() => {
       dispatch(removeNotification({ id: notificationId }));
-      console.log("timeouted");
+      // console.log("timeouted");
     }, 1000000);
   };
 

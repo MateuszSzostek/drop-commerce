@@ -10,7 +10,7 @@ export default function useSearchModule() {
   };
 
   const handleSelectCategory = (category: string) => {
-    console.warn(category);
+    //console.warn(category);
     setSelectedCategory(category);
     handleCloseCategoryDropdown();
   };
@@ -20,12 +20,10 @@ export default function useSearchModule() {
   };
 
   useEffect(() => {
-    console.warn(isCategoryDropdownOpened);
+    //console.warn(isCategoryDropdownOpened);
   }, [isCategoryDropdownOpened]);
 
-  const handleSubmitSearchRequest = () => {
-    
-  }
+  const handleSubmitSearchRequest = () => {};
 
   return {
     isCategoryDropdownOpened,

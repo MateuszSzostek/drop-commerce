@@ -45,7 +45,7 @@ export default function useProductsList() {
 
   useEffect(() => {
     if (!isLoadingProducts && products) {
-      console.warn(products);
+      //   console.warn(products);
       const productsOfUserData: ProductsDataType[] = products.data?.items?.map(
         (el, idx) => {
           return {
@@ -76,17 +76,17 @@ export default function useProductsList() {
   };
 
   const onFinish: FormProps<FilterProductsFieldType>["onFinish"] = (values) => {
-    console.log(values);
+    //console.log(values);
   };
   const onFinishFailed: FormProps<FilterProductsFieldType>["onFinishFailed"] = (
     errorInfo
   ): void => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
 
   const handleGetIkonkaProducts = async () => {
-    console.log(providerProductsForm.getFieldsValue());
-    console.log(existInProviderStore);
+    //  console.log(providerProductsForm.getFieldsValue());
+    //  console.log(existInProviderStore);
 
     const result = await triggerGetIkonkaProducts({
       page: "1",

@@ -24,8 +24,7 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { email, password, name, surname, phoneNumber, privacyPolicy } =
-      req.body;
+    const { email, password, name, surname, phone, privacyPolicy } = req.body;
 
     const existingUser = await User.findOne({ email });
 
@@ -43,7 +42,7 @@ router.post(
       password,
       name,
       surname,
-      phoneNumber,
+      phone,
       privacyPolicy,
       roles: ["CUSTOMER"],
     });

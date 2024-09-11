@@ -212,7 +212,6 @@
   display: flex;
   flex-direction: column;
   padding: 24px;
-  height: 250px;
 }
 
 .basket__summary-products-price {
@@ -265,4 +264,9 @@
   border-radius: 8px;
   font-size: 16px;
   color: black;
+}
+
+.basket__summary-title {
+  font-size: 18px;
+  font-weight: 700;
 }

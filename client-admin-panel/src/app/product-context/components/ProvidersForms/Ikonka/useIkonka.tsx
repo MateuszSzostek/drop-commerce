@@ -32,7 +32,7 @@ export default function useIkonka(
 
   useEffect(() => {
     if (!isLoadingProducts && products) {
-      console.warn(products);
+      // console.warn(products);
       const productsOfUserData: ProductsDataType[] = products?.data?.items?.map(
         () => {
           return {
@@ -54,7 +54,7 @@ export default function useIkonka(
 
   useEffect(() => {
     if (initialValues.length > 0) {
-      console.log(initialValues);
+      // console.log(initialValues);
       productForm.setFieldValue("provider", "ikonka");
       ikonkaForm.setFieldValue("dostawca", "ikonka");
       initialValues.forEach((el) => {
@@ -70,21 +70,21 @@ export default function useIkonka(
   };
 
   const transferValue = (from: string, to: string) => {
-    console.log(from);
-    console.log(to);
-    console.log(ikonkaForm.getFieldValue(from));
-    console.log(productForm.getFieldsValue());
+    // console.log(from);
+    // console.log(to);
+    // console.log(ikonkaForm.getFieldValue(from));
+    // console.log(productForm.getFieldsValue());
 
     productForm.setFieldValue(to, ikonkaForm.getFieldValue(from));
   };
 
   const onFinish: FormProps<FilterProductsFieldType>["onFinish"] = (values) => {
-    console.log(values);
+    // console.log(values);
   };
   const onFinishFailed: FormProps<FilterProductsFieldType>["onFinishFailed"] = (
     errorInfo
   ): void => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
 
   const productsTableColumns: TableProps<ProductsDataType>["columns"] = [

@@ -9,7 +9,20 @@ interface CustomerLoginRequest {
   shouldRemember: boolean;
 }
 
-interface CustomerLoginResponse {}
+interface CustomerLoginResponse {
+  status: string;
+  code: number;
+  message: string;
+  data: {
+    email: string;
+    password: string;
+    name: string;
+    surname: string;
+    phoneNumber: string;
+    privacyPolicy: boolean;
+    roles: string;
+  };
+}
 
 interface CustomerRegisterRequest {
   email: string;
@@ -36,11 +49,66 @@ interface CustomerRegisterResponse {
 }
 
 interface CustomerLogoutRequest {}
-
 interface CustomerLogoutResponse {}
+
+interface CustomerGetAccountDataRequest {}
+interface CustomerGetAccountDataResponse {
+  status: string;
+  code: number;
+  message: string;
+  data: {
+    name: string;
+    surname: string;
+    userName: string;
+    phone: string;
+    place: string;
+    streetName: string;
+    streetNumber: string;
+    post: string;
+    city: string;
+    postCode: string;
+    voivodeship?: string;
+    commune?: string;
+  };
+}
+
+interface CustomerUpdateAccountDataRequest {
+  name: string;
+  surname: string;
+  userName: string;
+  phone: string;
+  place: string;
+  streetName: string;
+  streetNumber: string;
+  post: string;
+  city: string;
+  postCode: string;
+  voivodeship?: string;
+  commune?: string;
+}
+interface CustomerUpdateAccountDataResponse {
+  status: string;
+  code: number;
+  message: string;
+  data: {
+    name: string;
+    surname: string;
+    userName: string;
+    phone: string;
+    place: string;
+    streetName: string;
+    streetNumber: string;
+    post: string;
+    city: string;
+    postCode: string;
+    voivodeship?: string;
+    commune?: string;
+  };
+}
 
 export const customerAuthApi = createApi({
   reducerPath: "customerAuthApi",
+  tagTypes: ["AccountData"],
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_AUTH_API_URL,
     credentials: "include",
@@ -82,6 +150,34 @@ export const customerAuthApi = createApi({
       transformResponse: (response: CustomerLogoutResponse) => response,
       transformErrorResponse: (response: ValidationErrorsResponse) => response,
     }),
+
+    customerGetAccountData: builder.query<
+      CustomerGetAccountDataResponse,
+      CustomerGetAccountDataRequest
+    >({
+      query: () => ({
+        url: `/customer-get-account-data`,
+        method: "GET",
+      }),
+      providesTags: ["AccountData"],
+      transformResponse: (response: CustomerGetAccountDataResponse) => response,
+      transformErrorResponse: (response: ValidationErrorsResponse) => response,
+    }),
+
+    customerUpdateAccountData: builder.mutation<
+      CustomerUpdateAccountDataResponse,
+      CustomerUpdateAccountDataRequest
+    >({
+      query: (payload) => ({
+        url: `/customer-update-account-data`,
+        method: "POST",
+        body: payload,
+      }),
+      invalidatesTags: ["AccountData"],
+      transformResponse: (response: CustomerUpdateAccountDataResponse) =>
+        response,
+      transformErrorResponse: (response: ValidationErrorsResponse) => response,
+    }),
   }),
 });
 
@@ -89,4 +185,7 @@ export const {
   useCustomerLoginMutation,
   useCustomerLogoutMutation,
   useCustomerRegisterMutation,
+  useCustomerGetAccountDataQuery,
+  useCustomerUpdateAccountDataMutation,
+  useLazyCustomerGetAccountDataQuery,
 } = customerAuthApi;

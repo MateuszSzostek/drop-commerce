@@ -9,6 +9,7 @@ export type Notification = {
   id: string;
   title: string;
   body: string;
+  type: "success" | "warning" | "error";
 };
 
 const initialState: INotifiacationsSlice = {
@@ -20,14 +21,14 @@ export const notificationsStoreSlice = createSlice({
   initialState,
   reducers: {
     addNotification: (state, action: PayloadAction<Notification>) => {
-      console.log(action);
+      // console.log(action);
       state.notifications.push(action.payload);
     },
     removeNotification: (state, action: PayloadAction<{ id: string }>) => {
       state.notifications = state.notifications.filter(
         (el) => el.id !== action.payload.id
       );
-      console.warn(state.notifications[0]);
+      // console.warn(state.notifications[0]);
     },
   },
 });

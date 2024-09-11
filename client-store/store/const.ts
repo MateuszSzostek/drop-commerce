@@ -86,6 +86,6 @@ export function getErrors(errors: ValidationErrors): ParsedValidationErrors {
     };
   }, {});
 
-  console.log(validationErrors);
+  //  console.log(validationErrors);
   return validationErrors;
 }

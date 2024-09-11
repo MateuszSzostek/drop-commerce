@@ -12,7 +12,7 @@ router.get(
   async (req: Request, res: Response) => {
     const category = await Category.find();
 
-    console.log(category);
+    // console.log(category);
 
     if (!category) {
       throw new NotFoundError();

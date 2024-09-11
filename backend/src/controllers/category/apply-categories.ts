@@ -18,7 +18,7 @@ router.post(
 
     const categoriesData = await Category.find({});
 
-    console.log(categoriesTreeObj);
+    //console.log(categoriesTreeObj);
 
     if (categoriesData.length === 0) {
       const categoriesData = Category.build({

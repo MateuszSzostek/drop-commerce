@@ -46,7 +46,7 @@ router.post(
       mirrorProductIds = [],
     } = req.body;
 
-    console.warn(req.body);
+    //console.warn(req.body);
 
     const product = await Product.findOne({
       providerIdentifier,

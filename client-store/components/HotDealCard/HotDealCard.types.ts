@@ -1,4 +1,5 @@
 export default interface IHotDealCard {
+  id: string;
   discountPrecentages: number;
   name: string;
   price: number;

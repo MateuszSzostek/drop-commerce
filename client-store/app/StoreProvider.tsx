@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import { makeStore, AppStore, persistor } from "../lib/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Notifications from "@/components/Notifications/Notifications";
+import { store } from "../lib/store";
+import { persistStore } from "redux-persist";
 
-const store = makeStore();
-
+persistStore(store);
 export default function StoreProvider({
   children,
 }: {

@@ -70,7 +70,7 @@ router.get(
             });
           }
 
-          console.log("All ikonka products fetched!");
+          //console.log("All ikonka products fetched!");
 
           const respo: ResponseType<{}> = {
             status: "success",
@@ -83,7 +83,7 @@ router.get(
         }
       );
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       const response: ResponseType<{}> = {
         status: "error",
         code: 400,

@@ -1,12 +1,16 @@
-import { FormProps, TableProps } from "antd"
-import { useEffect, useState } from "react"
-import React from "react"
-import { useTranslation } from "react-i18next"
-import { useGetOrdersQuery } from "../../services/orderSlice"
-import { OrdersDataType, ORDERS_TABLE_HEADERS, FilterOrdersFieldType } from "../../domain/order-context"
+import { FormProps, TableProps } from "antd";
+import { useEffect, useState } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { useGetOrdersQuery } from "../../services/orderSlice";
+import {
+  OrdersDataType,
+  ORDERS_TABLE_HEADERS,
+  FilterOrdersFieldType,
+} from "../../domain/order-context";
 
 export default function useOrdersList() {
-  const [ordersList, setOrdersList] = useState<OrdersDataType[]>([])
+  const [ordersList, setOrdersList] = useState<OrdersDataType[]>([]);
 
   const {
     data: orders,
@@ -15,7 +19,7 @@ export default function useOrdersList() {
   } = useGetOrdersQuery({
     refetchOnMountOrArgChange: true,
     skip: false,
-  })
+  });
 
   useEffect(() => {
     if (!isLoadingOrders && orders) {
@@ -43,21 +47,23 @@ export default function useOrdersList() {
               ],
             },
           ],
-        }
-      })
+        };
+      });
 
-      setOrdersList(ordersData)
+      setOrdersList(ordersData);
     }
-  }, [isLoadingOrders, orders])
+  }, [isLoadingOrders, orders]);
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const onFinish: FormProps<FilterOrdersFieldType>["onFinish"] = (values) => {
-    console.log(values)
-  }
-  const onFinishFailed: FormProps<FilterOrdersFieldType>["onFinishFailed"] = (errorInfo): void => {
-    console.log("Failed:", errorInfo)
-  }
+    //  console.log(values)
+  };
+  const onFinishFailed: FormProps<FilterOrdersFieldType>["onFinishFailed"] = (
+    errorInfo
+  ): void => {
+    //   console.log("Failed:", errorInfo)
+  };
 
   const ordersTableColumns: TableProps<OrdersDataType>["columns"] = [
     {
@@ -82,7 +88,9 @@ export default function useOrdersList() {
       responsive: ["xs", "sm", "md", "xl"],
     },
     {
-      title: t(`orders.orders-list.${ORDERS_TABLE_HEADERS.ownerSurname}-header`),
+      title: t(
+        `orders.orders-list.${ORDERS_TABLE_HEADERS.ownerSurname}-header`
+      ),
       dataIndex: ORDERS_TABLE_HEADERS.ownerSurname,
       key: ORDERS_TABLE_HEADERS.ownerSurname,
       render: (text) => <a>{text}</a>,
@@ -102,12 +110,12 @@ export default function useOrdersList() {
       render: (text) => <a>{text}</a>,
       responsive: ["xs", "sm", "md", "xl"],
     },
-  ]
+  ];
 
   return {
     ordersTableColumns,
     ordersList,
     onFinish,
     onFinishFailed,
-  }
+  };
 }

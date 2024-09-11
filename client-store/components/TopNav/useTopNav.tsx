@@ -1,6 +1,10 @@
 import { useCustomerLogoutMutation } from "@/store/authSlice";
 import { useDispatch } from "react-redux";
 import { setUserData } from "@/store/userStoreSlice";
+import {
+  setTotalBasketItems,
+  setTotalGrossBasketPrice,
+} from "@/store/basketStoreSlice";
 
 export default function useTopNav() {
   const [triggerLogout] = useCustomerLogoutMutation();
@@ -19,6 +23,9 @@ export default function useTopNav() {
           isLoggedIn: false,
         })
       );
+
+      dispatch(setTotalGrossBasketPrice(0));
+      dispatch(setTotalBasketItems(0));
     }
   };
 

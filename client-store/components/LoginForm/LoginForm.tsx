@@ -4,7 +4,8 @@ import translations from "@/translations/translations.pl";
 import useLoginForm from "./useLoginForm";
 
 export default function LoginForm() {
-  const { handleSubmitCustomerLogin, handleTestNotification } = useLoginForm();
+  const { handleSubmitCustomerLogin, handleTestNotification, formErrors } =
+    useLoginForm();
 
   return (
     <>
@@ -62,6 +63,11 @@ export default function LoginForm() {
             {translations.SignIn["login-button"]}
           </button>
         </form>
+        <ul>
+          {Object.keys(formErrors).map((key) => (
+            <li style={{ color: "red" }}>{formErrors[key]}</li>
+          ))}
+        </ul>
 
         <button onClick={handleTestNotification}>NOTIFICATION</button>
       </div>

@@ -20,7 +20,7 @@ export const userStoreSlice = createSlice({
   initialState,
   reducers: {
     setUserData: (state, action: PayloadAction<IUserStoreSlice>) => {
-      console.warn(action.payload);
+      // console.warn(action.payload);
 
       let newState = { ...state };
 

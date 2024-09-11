@@ -3,6 +3,8 @@
 import useNotifications from "./useNotifications";
 import "./notifications.css";
 import SuccessCheckmarkSvg from "@/assets/images/components/SuccessCheckmarkSvg";
+import WarningCheckmarkSvg from "@/assets/images/components/WarningCheckmarkSvg";
+import FailCheckmarkSvg from "@/assets/images/components/FailCheckmarkSvg";
 
 export default function Notifications() {
   const { notifications, handleDeleteNotification } = useNotifications();
@@ -15,7 +17,9 @@ export default function Notifications() {
           onClick={() => handleDeleteNotification(el?.id)}
         >
           <div className="notification__icon">
-            <SuccessCheckmarkSvg />
+            {el?.type === "success" && <SuccessCheckmarkSvg />}
+            {el?.type === "warning" && <WarningCheckmarkSvg />}
+            {el?.type === "error" && <FailCheckmarkSvg />}
           </div>
           <div className="notification__content">
             <span className="notification__title">{el?.title}</span>

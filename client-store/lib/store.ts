@@ -5,6 +5,8 @@ import notificationsStoreSlice from "@/store/notificationsStoreSlice";
 import basketStoreSlice from "@/store/basketStoreSlice";
 import { customerAuthApi } from "@/store/authSlice";
 import { userStoreSlice } from "@/store/userStoreSlice";
+import { deliveryAddressApi } from "@/store/deliveryAddressSlice";
+import { invoiceDataApi } from "@/store/invoiceDataSlice";
 import {
   persistStore,
   persistReducer,
@@ -24,13 +26,15 @@ const rootReducer = combineReducers({
   basketStoreApi: basketStoreSlice,
   customerAuthApi: customerAuthApi.reducer,
   userStoreSlice: userStoreSlice.reducer,
+  deliveryAddressApi: deliveryAddressApi.reducer,
+  invoiceDataApi: invoiceDataApi.reducer,
 });
 
 // Configure persist settings
 const persistConfig = {
-  key: "root",
+  key: "userStoreSlice",
   storage,
-  whitelist: ["basketStoreApi", "userStoreSlice"], // add the reducers you want to persist
+  whitelist: ["userStoreSlice", "basketStoreSlice"], // add the reducers you want to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -44,7 +48,12 @@ export const makeStore = () => {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat([basketApi.middleware, customerAuthApi.middleware]),
+      }).concat([
+        basketApi.middleware,
+        customerAuthApi.middleware,
+        deliveryAddressApi.middleware,
+        invoiceDataApi.middleware,
+      ]),
     devTools: process.env.NODE_ENV !== "production",
   });
 };

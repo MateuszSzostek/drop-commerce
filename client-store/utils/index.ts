@@ -10,3 +10,15 @@ export function splitArrayIntoChunks(array: any[], chunkSize: number = 8) {
 
   return result;
 }
+export function prepareStringPrice(num: number) {
+  // Convert the number to a string
+  const numStr = num.toFixed(2);
+
+  // Split the string using the dot as the delimiter
+  const [int, decimal] = numStr.split(".");
+
+  return {
+    int: int || "0", // In case there's no number before the dot
+    decimal: decimal || "0", // In case there's no number after the dot
+  };
+}

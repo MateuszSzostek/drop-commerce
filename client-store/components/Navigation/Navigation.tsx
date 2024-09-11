@@ -8,7 +8,10 @@ import Link from "next/link";
 import Carousel from "../Carousel/Carousel";
 import translations from "@/translations/translations.pl";
 
-export default function Navigation({ children }: PropsWithChildren<{}>) {
+export default function Navigation({
+  children,
+  hotDealsProducts,
+}: PropsWithChildren<any>) {
   return (
     <>
       <div className="sidebar-widget hot-deals outer-bottom-xs">
@@ -19,7 +22,22 @@ export default function Navigation({ children }: PropsWithChildren<{}>) {
           //<div className="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
         }
         <Carousel className="sidebar-carousel custom-carousel owl-theme outer-top-ss">
-          <HotDealCard
+          {hotDealsProducts?.map((el) => (
+            <HotDealCard
+              id={el?.providerIdentifier}
+              name={el?.name}
+              price={parseFloat(el?.netPrice) * (parseFloat(el?.vat) / 100 + 1)}
+              priceBefore={
+                parseFloat(el?.netPrice) * (parseFloat(el?.vat) / 100 + 1)
+              }
+              timeInSeconds={40000}
+              discountPrecentages={30}
+              image={el?.pictures[0]}
+              imageHover={el?.pictures[1]}
+            />
+          ))}
+          {/*
+ <HotDealCard
             name="Floral Print Buttoned"
             price={60}
             priceBefore={80}
@@ -46,6 +64,7 @@ export default function Navigation({ children }: PropsWithChildren<{}>) {
             image={"/assets/images/hot-deals/p15.jpg"}
             imageHover={"/assets/images/hot-deals/p15_hover.jpg"}
           />
+*/}
         </Carousel>
       </div>
       {

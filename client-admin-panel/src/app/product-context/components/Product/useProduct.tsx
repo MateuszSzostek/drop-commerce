@@ -31,8 +31,8 @@ export default function useProduct() {
   const [selectedPictures, setSelectedPictures] = useState<string[]>([]);
   const selectedPicturesWatcher = useWatch("pictures", productForm);
 
-  console.warn(searchParams.get("providerProductId"));
-  console.warn(searchParams.get("selectedProviderId"));
+  //console.warn(searchParams.get("providerProductId"));
+  // console.warn(searchParams.get("selectedProviderId"));
 
   const {
     data: product,
@@ -100,7 +100,7 @@ export default function useProduct() {
   }, []);
 
   useEffect(() => {
-    console.warn(selectedPicturesWatcher);
+    //  console.warn(selectedPicturesWatcher);
     if (selectedPicturesWatcher) {
       let newPictures;
 
@@ -110,7 +110,7 @@ export default function useProduct() {
         newPictures = [...selectedPictures, ...selectedPicturesWatcher];
       }
 
-      console.warn(newPictures);
+      //  console.warn(newPictures);
 
       const newPicturesSet = [...new Set(newPictures)];
       setSelectedPictures(newPicturesSet as string[]);
@@ -154,7 +154,7 @@ export default function useProduct() {
   const onFinishFailed: FormProps<ProductFieldType>["onFinishFailed"] = (
     errorInfo
   ): void => {
-    console.log("Failed:", errorInfo);
+    //console.log("Failed:", errorInfo);
   };
 
   const handleProductFieldsChange = () => {

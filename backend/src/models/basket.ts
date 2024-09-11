@@ -4,9 +4,13 @@ import { ParsedQs } from "qs";
 interface BasketAttrs {
   ownerId: string;
   providerIdentifier: string;
-  productId: string;
-  providerProductId: string;
+  provider: string;
   quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+  productName: string;
+  picture: string;
+  deliveryCost: number;
 }
 
 interface BasketModel extends mongoose.Model<BasketDoc> {
@@ -16,9 +20,13 @@ interface BasketModel extends mongoose.Model<BasketDoc> {
 export interface BasketDoc extends mongoose.Document {
   ownerId: string;
   providerIdentifier: string;
-  productId: string;
-  providerProductId: string;
+  provider: string;
   quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+  productName: string;
+  picture: string;
+  deliveryCost: number;
 }
 
 const basketSchema = new mongoose.Schema(
@@ -31,15 +39,31 @@ const basketSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    productId: {
-      type: String,
-      required: true,
-    },
-    providerProductId: {
+    provider: {
       type: String,
       required: true,
     },
     quantity: {
+      type: Number,
+      required: true,
+    },
+    unitPrice: {
+      type: Number,
+      required: true,
+    },
+    totalPrice: {
+      type: Number,
+      required: true,
+    },
+    productName: {
+      type: String,
+      required: true,
+    },
+    picture: {
+      type: String,
+      required: true,
+    },
+    deliveryCost: {
       type: Number,
       required: true,
     },

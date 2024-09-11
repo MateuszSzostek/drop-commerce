@@ -36,7 +36,27 @@ import { addTagRouter } from "./controllers/category/add-tag";
 import { deleteTagRoute } from "./controllers/category/delete-tag";
 import { getAllTagRouter } from "./controllers/category/get-all-tags";
 
+import { addItemToBasketRouter } from "./controllers/basket/add-to-basket";
+import { removeItemFromBasketRouter } from "./controllers/basket/remove-from-basket";
+import { getBasketRouter } from "./controllers/basket/get-basket";
+
+import { customerAddDeliveryAddress } from "./controllers/delivery-address/customer-add-delivery-address";
+import { customerDeleteDeliveryAddress } from "./controllers/delivery-address/customer-delete-delivery-address";
+import { customerEditDeliveryAddress } from "./controllers/delivery-address/customer-edit-delivery-address";
+import { customerGetDeliveryAddress } from "./controllers/delivery-address/customer-get-delivery-address";
+import { customerGetAllDeliveryAddress } from "./controllers/delivery-address/customer-get-all-delivery-address";
+
+import { customerAddInvoiceData } from "./controllers/invoice-data/customer-add-invoice-data";
+import { customerDeleteInvoiceData } from "./controllers/invoice-data/customer-delete-invoice-data";
+import { customerEditInvoiceData } from "./controllers/invoice-data/customer-edit-invoice-data";
+import { customerGetInvoiceData } from "./controllers/invoice-data/customer-get-invoice-data";
+import { customerGetAllInvoiceData } from "./controllers/invoice-data/customer-get-all-invoice-data";
+
+import { customerGetAccountData } from "./controllers/auth/customer-get-account-data";
+import { customerUpdateAccountData } from "./controllers/auth/customer-update-account-data";
+
 import { ApolloServer, gql } from "apollo-server-express";
+
 //import resolvers from "./graphql/resolvers";
 
 const typeDefs = gql`
@@ -106,6 +126,25 @@ app.use(getCategoriesRouter);
 app.use(addTagRouter);
 app.use(deleteTagRoute);
 app.use(getAllTagRouter);
+
+app.use(addItemToBasketRouter);
+app.use(removeItemFromBasketRouter);
+app.use(getBasketRouter);
+
+app.use(customerAddDeliveryAddress);
+app.use(customerDeleteDeliveryAddress);
+app.use(customerEditDeliveryAddress);
+app.use(customerGetDeliveryAddress);
+app.use(customerGetAllDeliveryAddress);
+
+app.use(customerAddInvoiceData);
+app.use(customerDeleteInvoiceData);
+app.use(customerEditInvoiceData);
+app.use(customerGetInvoiceData);
+app.use(customerGetAllInvoiceData);
+
+app.use(customerGetAccountData);
+app.use(customerUpdateAccountData);
 
 app.all("*", async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");

@@ -1,39 +1,47 @@
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { ROUTES } from "../../../routing-context/domain/router-context"
-import { useGetKindergartenQuery, useDeleteKindergartenMutation } from "../../services/kindergartenSlice"
-import { Space, TableProps } from "antd"
-import { faker } from "@faker-js/faker"
-import { useTranslation } from "react-i18next"
-import { Link, LinkStyleType } from "../../../../common/components"
-import { SelectOptions } from "../../../../common/types"
-import { useGetAllGroupsByKindergartenQuery } from "../../../group-context/services/groupsSlice"
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ROUTES } from "../../../routing-context/domain/router-context";
+import {
+  useGetKindergartenQuery,
+  useDeleteKindergartenMutation,
+} from "../../services/kindergartenSlice";
+import { Space, TableProps } from "antd";
+import { faker } from "@faker-js/faker";
+import { useTranslation } from "react-i18next";
+import { Link, LinkStyleType } from "../../../../common/components";
+import { SelectOptions } from "../../../../common/types";
+import { useGetAllGroupsByKindergartenQuery } from "../../../group-context/services/groupsSlice";
 
 interface KindergartenData {
-  name: string
-  groups: string[]
-  kidsAmount: number
-  address: string
+  name: string;
+  groups: string[];
+  kidsAmount: number;
+  address: string;
 }
 
 interface KindergartenGroupsData {
-  id: string
-  name: string
+  id: string;
+  name: string;
   teachers: {
-    id: string
-    name: string
-  }[]
-  childrenAmount: number
+    id: string;
+    name: string;
+  }[];
+  childrenAmount: number;
 }
 
 export default function useKindergartenPreview() {
-  const [deleteConfirmationModal, setDeleteConfirmationModal] = useState<boolean>(false)
-  const [isOpenAssignGroupnModal, setIsOpenAssignGroupnModal] = useState<boolean>(false)
-  const [kindergartenData, setkindergartenData] = useState<KindergartenData | null>(null)
-  const [kindergartenGroupsData, setKindergartenGroupsData] = useState<GroupsDataType[]>([])
-  const params = useParams()
-  const navigate = useNavigate()
-  const { t } = useTranslation()
+  const [deleteConfirmationModal, setDeleteConfirmationModal] =
+    useState<boolean>(false);
+  const [isOpenAssignGroupnModal, setIsOpenAssignGroupnModal] =
+    useState<boolean>(false);
+  const [kindergartenData, setkindergartenData] =
+    useState<KindergartenData | null>(null);
+  const [kindergartenGroupsData, setKindergartenGroupsData] = useState<
+    GroupsDataType[]
+  >([]);
+  const params = useParams();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
   const {
     data: kindergarten,
     isFetching: isFetchingKindergarten,
@@ -43,8 +51,8 @@ export default function useKindergartenPreview() {
     {
       refetchOnMountOrArgChange: true,
       skip: false,
-    },
-  )
+    }
+  );
 
   const {
     data: groupsByKindergarten,
@@ -55,34 +63,36 @@ export default function useKindergartenPreview() {
     {
       refetchOnMountOrArgChange: true,
       skip: false,
-    },
-  )
+    }
+  );
 
   useEffect(() => {
     if (!isLoadingGroupsByKindergarten && groupsByKindergarten) {
-      const groups: GroupsDataType[] = groupsByKindergarten.data.map((group, idx) => {
-        return {
-          lp: idx,
-          key: group.id,
-          id: group.id,
-          name: group.name,
-          teachers: group.teachers.map((teacher) => {
-            return {
-              "full-name": "",
-              id: "",
-            }
-          }),
-          "kids-amount": group.children.length,
+      const groups: GroupsDataType[] = groupsByKindergarten.data.map(
+        (group, idx) => {
+          return {
+            lp: idx,
+            key: group.id,
+            id: group.id,
+            name: group.name,
+            teachers: group.teachers.map((teacher) => {
+              return {
+                "full-name": "",
+                id: "",
+              };
+            }),
+            "kids-amount": group.children.length,
+          };
         }
-      })
+      );
 
-      setKindergartenGroupsData(groups)
+      setKindergartenGroupsData(groups);
     }
-    console.log(groupsByKindergarten)
-  }, [groupsByKindergarten, isLoadingGroupsByKindergarten])
+    //  console.log(groupsByKindergarten)
+  }, [groupsByKindergarten, isLoadingGroupsByKindergarten]);
 
-  const [deleteKindergarten] = useDeleteKindergartenMutation()
-  console.log(params)
+  const [deleteKindergarten] = useDeleteKindergartenMutation();
+  // console.log(params)
 
   useEffect(() => {
     if (!isLoadingKindergarten && kindergarten) {
@@ -91,62 +101,66 @@ export default function useKindergartenPreview() {
         groups: kindergarten.data.groups,
         kidsAmount: kindergarten.data.kidsAmount,
         address: kindergarten.data.address,
-      }
+      };
 
-      const avaliableGroupsOptions: SelectOptions = data.groups.map((group) => ({
-        value: group,
-        label: group,
-      }))
+      const avaliableGroupsOptions: SelectOptions = data.groups.map(
+        (group) => ({
+          value: group,
+          label: group,
+        })
+      );
 
-      setkindergartenData(data)
+      setkindergartenData(data);
     }
-  }, [isLoadingKindergarten, kindergarten])
+  }, [isLoadingKindergarten, kindergarten]);
 
   useEffect(() => {
-    console.log(kindergartenData)
-  }, [kindergartenData])
+    console.log(kindergartenData);
+  }, [kindergartenData]);
 
   const handleEditKindergarten = () => {
-    navigate(`/${ROUTES.app}/${ROUTES.editKindergarten}/${params?.kindergartenId}`)
-  }
+    navigate(
+      `/${ROUTES.app}/${ROUTES.editKindergarten}/${params?.kindergartenId}`
+    );
+  };
 
   const handleDeleteKindergarten = () => {
-    setDeleteConfirmationModal(true)
-  }
+    setDeleteConfirmationModal(true);
+  };
 
   const handleDeleteKindergartenConfirmation = async () => {
-    await deleteKindergarten({ id: params?.kindergartenId as string })
-    navigate(`/${ROUTES.app}/${ROUTES.kindergartens}`)
-  }
+    await deleteKindergarten({ id: params?.kindergartenId as string });
+    navigate(`/${ROUTES.app}/${ROUTES.kindergartens}`);
+  };
 
   const handleDeleteKindergartenCancel = () => {
-    setDeleteConfirmationModal(false)
-  }
+    setDeleteConfirmationModal(false);
+  };
 
   const handleOpenAssignGroupModal = () => {
-    setIsOpenAssignGroupnModal(true)
-  }
+    setIsOpenAssignGroupnModal(true);
+  };
 
   const handleCloseAssignGroupModal = () => {
-    setIsOpenAssignGroupnModal(false)
-  }
+    setIsOpenAssignGroupnModal(false);
+  };
 
-  const handleAssignGroup = () => {}
+  const handleAssignGroup = () => {};
 
   const handleCreateGroup = () => {
-    navigate(`/${ROUTES.app}/${ROUTES.newGroup}`)
-  }
+    navigate(`/${ROUTES.app}/${ROUTES.newGroup}`);
+  };
 
   interface GroupsDataType {
-    key: string
-    lp: number | string
-    name: string
-    teachers: { id: string; "full-name": string }[]
-    "kids-amount": number
-    id: string
+    key: string;
+    lp: number | string;
+    name: string;
+    teachers: { id: string; "full-name": string }[];
+    "kids-amount": number;
+    id: string;
   }
 
-  const GROUPS = ["Poziomki", "Kruszynki", "Misiaczki", "Truskaweczki"]
+  const GROUPS = ["Poziomki", "Kruszynki", "Misiaczki", "Truskaweczki"];
 
   const GROUPS_TABLE_HEADERS = {
     lp: "lp",
@@ -154,7 +168,7 @@ export default function useKindergartenPreview() {
     actions: "actions",
     wardens: "wardens",
     kidsAmount: "kids-amount",
-  }
+  };
 
   const groupsTableColumns: TableProps<GroupsDataType>["columns"] = [
     {
@@ -169,7 +183,10 @@ export default function useKindergartenPreview() {
       dataIndex: GROUPS_TABLE_HEADERS.name,
       key: GROUPS_TABLE_HEADERS.name,
       render: (_, record) => (
-        <Link styleType={LinkStyleType.TABLE_RECORD} to={`/${ROUTES.app}/${ROUTES.groupPreview}/${record.id}`}>
+        <Link
+          styleType={LinkStyleType.TABLE_RECORD}
+          to={`/${ROUTES.app}/${ROUTES.groupPreview}/${record.id}`}
+        >
           {record.name}
         </Link>
       ),
@@ -182,12 +199,15 @@ export default function useKindergartenPreview() {
       render: (_, record) => {
         return record.teachers?.map((teacher) => (
           <Space direction="horizontal">
-            <Link styleType={LinkStyleType.TABLE_RECORD} to={`/${ROUTES.app}/${ROUTES.teacherPreview}/${teacher.id}`}>
+            <Link
+              styleType={LinkStyleType.TABLE_RECORD}
+              to={`/${ROUTES.app}/${ROUTES.teacherPreview}/${teacher.id}`}
+            >
               {teacher["full-name"]}
             </Link>{" "}
             <span> </span>
           </Space>
-        ))
+        ));
       },
       responsive: ["sm", "md", "xl"],
     },
@@ -199,12 +219,12 @@ export default function useKindergartenPreview() {
       render: (text) => <p>{text}</p>,
       responsive: ["sm", "md", "xl"],
     },
-  ]
+  ];
 
-  const today = new Date()
-  today.setDate(today.getDate() - 10)
-  const future = new Date()
-  future.setDate(future.getDate() + 10)
+  const today = new Date();
+  today.setDate(today.getDate() - 10);
+  const future = new Date();
+  future.setDate(future.getDate() + 10);
 
   const groupsTableFakeData: GroupsDataType[] = [
     {
@@ -251,7 +271,7 @@ export default function useKindergartenPreview() {
       "kids-amount": 0,
       id: "saldhmfaslidngfha2435vsdo",
     },
-  ]
+  ];
 
   return {
     kindergartenData,
@@ -269,5 +289,5 @@ export default function useKindergartenPreview() {
     handleCloseAssignGroupModal,
     handleAssignGroup,
     handleCreateGroup,
-  }
+  };
 }

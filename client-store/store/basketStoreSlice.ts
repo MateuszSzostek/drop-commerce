@@ -3,6 +3,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IBasketSlice {
   items: BasketItem[];
+  totalGrossPrice: number;
+  totalItems: number;
 }
 
 type BasketItem = {
@@ -15,6 +17,8 @@ type BasketItem = {
 
 const initialState: IBasketSlice = {
   items: [],
+  totalGrossPrice: 0,
+  totalItems: 0,
 };
 
 export const basketStoreSlice = createSlice({
@@ -24,9 +28,16 @@ export const basketStoreSlice = createSlice({
     setBasket: (state, action: PayloadAction<BasketItem[]>) => {
       state.items = action.payload;
     },
+    setTotalGrossBasketPrice: (state, action: PayloadAction<number>) => {
+      state.totalGrossPrice = action.payload;
+    },
+    setTotalBasketItems: (state, action: PayloadAction<number>) => {
+      state.totalItems = action.payload;
+    },
   },
 });
 
-export const { setBasket } = basketStoreSlice.actions;
+export const { setBasket, setTotalGrossBasketPrice, setTotalBasketItems } =
+  basketStoreSlice.actions;
 
 export default basketStoreSlice.reducer;

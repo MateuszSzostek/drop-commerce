@@ -33,7 +33,7 @@ export default function SearchModule() {
               <span
                 className="search-control__categories-dropdown-option"
                 onClick={(e) => {
-                  console.warn(e);
+                  // console.warn(e);
                   handleSelectCategory(e?.target?.textContent);
                 }}
               >
@@ -42,7 +42,7 @@ export default function SearchModule() {
               <span
                 className="search-control__categories-dropdown-option"
                 onClick={(e) => {
-                  console.warn(e);
+                  // console.warn(e);
                   handleSelectCategory(e?.target?.textContent);
                 }}
               >
@@ -51,7 +51,7 @@ export default function SearchModule() {
               <span
                 className="search-control__categories-dropdown-option"
                 onClick={(e) => {
-                  console.warn(e);
+                  //  console.warn(e);
                   handleSelectCategory(e?.target?.textContent);
                 }}
               >
@@ -60,7 +60,7 @@ export default function SearchModule() {
               <span
                 className="search-control__categories-dropdown-option"
                 onClick={(e) => {
-                  console.warn(e);
+                  //  console.warn(e);
                   handleSelectCategory(e?.target?.textContent);
                 }}
               >
@@ -69,7 +69,7 @@ export default function SearchModule() {
               <span
                 className="search-control__categories-dropdown-option"
                 onClick={(e) => {
-                  console.warn(e);
+                  //  console.warn(e);
                   handleSelectCategory(e?.target?.textContent);
                 }}
               >

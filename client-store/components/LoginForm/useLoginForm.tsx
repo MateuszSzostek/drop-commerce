@@ -2,10 +2,21 @@
 
 import { useCustomerLoginMutation } from "@/store/authSlice";
 import useNotifications from "../Notifications/useNotifications";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { getErrors, ParsedValidationErrors } from "@/store/const";
+import { setUserData } from "@/store/userStoreSlice";
 
 export default function useLoginForm() {
   const [triggerCustomerLogin, customerLoginMutationResult] =
     useCustomerLoginMutation();
+
+  const [formErrors, setFormErrors] = useState<ParsedValidationErrors>({});
+
+  const router = useRouter();
+
+  const dispatch = useDispatch();
 
   const { showNotification } = useNotifications();
 
@@ -13,6 +24,7 @@ export default function useLoginForm() {
     showNotification({
       title: "Test Notification",
       body: "This is a test notification",
+      type: "success",
     });
   };
 
@@ -21,7 +33,7 @@ export default function useLoginForm() {
 
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log(Object.fromEntries(formData));
+    // console.log(Object.fromEntries(formData));
 
     const customerLoginResult = await triggerCustomerLogin({
       email: formData.get("email") as string,
@@ -30,10 +42,27 @@ export default function useLoginForm() {
     });
 
     if ("data" in customerLoginResult) {
+      //console.warn(customerLoginResult?.data?.data?.name);
+      dispatch(
+        setUserData({
+          name: customerLoginResult?.data?.data?.name as string,
+          surname: customerLoginResult?.data?.data?.surname as string,
+          email: customerLoginResult?.data?.data?.email as string,
+          isLoggedIn: true,
+        })
+      );
+      router.push("/", { scroll: false });
     } else {
       //validation errors
+      onValidationErrors(customerLoginResult.error);
     }
   };
 
-  return { handleSubmitCustomerLogin, handleTestNotification };
+  const onValidationErrors = (errors: Error): void => {
+    const formErrors = getErrors(errors);
+    //console.warn(formErrors);
+    setFormErrors(formErrors);
+  };
+
+  return { handleSubmitCustomerLogin, handleTestNotification, formErrors };
 }
